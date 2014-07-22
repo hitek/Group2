@@ -1,0 +1,44 @@
+.clear {
+    clear: both;
+}
+body{
+	background: gray;
+}
+#page{
+	margin: auto auto;
+	width: 80%;
+	min-width: 620px;
+}
+#section{
+	padding: 2.5%;
+	background: #e3e3e3
+}
+#register{
+	float: left;
+	
+	width: 70%;
+}
+#register .header{
+	text-align: center;
+}
+#register .footer .cancel, 
+#register .footer .submit{
+	float: right;
+}
+#register .footer{
+	margin-left:;
+	margin-right: 50px;
+}
+#login{
+	float: right;
+	margin: auto auto;
+	width: 30%;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 200px;
+    text-align: right;
+    padding-top: 5px;
+}
