@@ -32,6 +32,9 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/login.css" type="text/css"></link>
+	<!--[if lt IE 9]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
 </head>
 <body>
 	<wrapper>
@@ -45,7 +48,7 @@
     		<span class="message"><%=message%></span>
 		</form>
 		<div class="login-help">
-    		<a href="#">Register</a> <!--  <a href="#">Forgot Password</a>--> 
+    		<a href="#">Register</a> <!--<a href="#">Forgot Password</a>--> 
  	 	</div>
  	 	</div>
 		</page>
