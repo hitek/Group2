@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
     
-<%//******** Protected Page Check ***********
+<% //******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
 	if(currentUser==null){
 		response.sendRedirect("login.jsp");
@@ -14,7 +14,7 @@
 	}else{
 		session.removeAttribute("message");
 	}
-%>
+%>/
     
 <%
 //******************** add or update article *************************

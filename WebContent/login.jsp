@@ -23,20 +23,33 @@
 		return;
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>Login Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Login Page</title>
+	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/login.css" type="text/css"></link>
 </head>
 <body>
-	<form action="" method="POST">
-		<p>Username:<br/>
-		<input type="text" name="username" /></p>
-		<p>Password:<br/>
-		<input type="password" name="password" /></p>
-		<input type="submit" name="submit" value="Login" /><span class="message"><%=message%></span>
-	</form>
+	<wrapper>
+		<page>
+		<div class="login-card">
+    	<h1>Log-in</h1><br>
+		<form action="" method="POST">
+			<input type="text" name="username" placeholder="Username">
+    		<input type="password" name="password" placeholder="Password">
+    		<input type="submit" name="sumbit" class="login login-submit" value="Login">
+    		<span class="message"><%=message%></span>
+		</form>
+		<div class="login-help">
+    		<a href="#">Register</a> <!--  <a href="#">Forgot Password</a>--> 
+ 	 	</div>
+ 	 	</div>
+		</page>
+	</wrapper>
+	 <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
 </body>
 </html>
