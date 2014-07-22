@@ -26,8 +26,8 @@
   	
 </head>
 <body>
-<wrapper>
-	<page>
+<div id="wrapper">
+	<div id="page">
 	<a href="login.jsp">login</a><br>
 	<%
 		for(i=0;i<articles.size();i++){
@@ -41,6 +41,7 @@
 	<%		
 		}
 	%>
-</wrapper>		
+	</div>
+</dive>		
 </body>
 </html>
