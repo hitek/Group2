@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+
+body {background-color: black;}
+p.ArclText {width: 500px; text-indent: 50px; font-size: 15px; color: LightSlateGray ; background-color: mediumblue;
+			position: relative; right: -70px;}
+p.ArclTitle {width: 250px; border-style: outset;border-width: 7px; 
+			font-size: 18px; background-color: gray;
+			position: relative; right: -70px; top: 10px;}
+
+div.article{width: 600px;float: left;border-style: inset;border-width: 7px; border-color: darkblue; background-color:mediumblue;}
+
+div.sideBar {
+    position: fixed;
+    width: 150px;
+    right: 10px;
+    height:1000px;
+    background-color: LightGray;
+}
