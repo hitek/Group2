@@ -5,6 +5,7 @@
 %>
 	
 <%
+//Zack Moore
 	ArrayList<Article> articles;
 	Article article;
 	int i;
