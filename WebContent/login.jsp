@@ -48,7 +48,7 @@
     		<span class="message"><%=message%></span>
 		</form>
 		<div class="login-help">
-    		<a href="#">Register</a> <!--<a href="#">Forgot Password</a>--> 
+    		<a href="#">[ Register ]</a>
  	 	</div>
  	 	</div>
 		</page>
