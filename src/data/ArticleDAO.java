@@ -38,7 +38,7 @@ public class ArticleDAO {
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM articles ORDER BY article_post_date DESC;";
+		String preparedSQL = "SELECT * FROM articles ORDER BY article_date DESC;";
 		
 	    try{
 	    	connection = getConnection();
@@ -50,7 +50,7 @@ public class ArticleDAO {
 				article.setArticleTitle(rs.getString("article_title"));
 				article.setArticleAuthor(rs.getString("article_author"));
 				article.setArticleText(rs.getString("article_text"));
-				article.setArticleDate(rs.getString("article_post_date"));
+				article.setArticleDate(rs.getString("article_date"));
 				articles.add(article);
 			}	
 			rs.close();		
@@ -67,7 +67,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_text, article_post_date) values(?,?,?,NOW());";
+		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_text, article_date) values(?,?,?,NOW());";
 		
 	    try{
 	    	connection = getConnection();
@@ -119,7 +119,7 @@ public class ArticleDAO {
 			article.setArticleTitle(rs.getString("article_title"));
 			article.setArticleAuthor(rs.getString("article_author"));
 			article.setArticleText(rs.getString("article_text"));
-			article.setArticleDate(rs.getString("article_post_date"));
+			article.setArticleDate(rs.getString("article_date"));
 			statement.close();
 			connection.close();
 		}catch (SQLException ex){
@@ -133,7 +133,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "update articles set article_title=?, article_author=?, article_text=?, article_post_date=NOW() where article_id=?;";
+		String preparedSQL = "update articles set article_title=?, article_author=?, article_text=?, article_date=NOW() where article_id=?;";
 		
 	    try{
 	    	connection = getConnection();

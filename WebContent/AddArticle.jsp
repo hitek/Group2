@@ -14,9 +14,9 @@
 	}else{
 		session.removeAttribute("message");
 	}
-%>/
+	%>/
     
-<%
+	<%
 //******************** add or update article *************************
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String articleID = request.getParameter("articleID");

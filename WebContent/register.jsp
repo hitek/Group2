@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
 <%
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		String user_name = request.getParameter("user_name");
-		String user_psword = request.getParameter("user_psword");
+		String user_name = request.getParameter("username");
+		String user_psword = request.getParameter("password");
 		
 		User user = new User();
 		user.setUser_name(user_name);

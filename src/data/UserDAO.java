@@ -102,7 +102,7 @@ public class UserDAO {
 	public synchronized static User authenticate(String username, String password) {
 	 	User user=null;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM User WHERE user_name = ? and user_psword = ?;";
+		String preparedSQL = "SELECT * FROM user WHERE user_name = ? and user_psword = ?;";
 		
 	    try{
 	    	connection = getConnection();
