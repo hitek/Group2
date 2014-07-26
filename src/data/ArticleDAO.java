@@ -19,7 +19,7 @@ public class ArticleDAO {
 		 
 	        try {
 	        	Class.forName("com.mysql.jdbc.Driver"); 
-	            conn = DriverManager.getConnection("jdbc:mysql://hightower2.cis.uafs.edu:3306/rhawthorne?user=rhawthorne&password=p00297031");
+	            conn = DriverManager.getConnection("jdbc:mysql://hightower2.cis.uafs.edu:3306/group2?user=group2&password=g5432c");
 	        }
 	        catch (SQLException ex) {
 	            System.out.println("Error: " + ex);
@@ -151,33 +151,5 @@ public class ArticleDAO {
 		}	
 	    return status;
 	}
-	public synchronized static User authenticate(String username, String password) {
-	 	User user=null;
-	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM Users WHERE username = ? and password = ?;";
-		
-	    try{
-	    	connection = getConnection();
-	    	statement = connection.prepareStatement(preparedSQL);
-	    	statement.setString(1, username);
-	    	statement.setString(2, password);
-			ResultSet rs = statement.executeQuery();
-			if(rs.next()){
-				user = new User();
-				user.setUserID(rs.getInt("user_id"));
-				user.setFirstName(rs.getString("firstName"));
-				user.setLastName(rs.getString("lastName"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-			}	
-			rs.close();		
-			statement.close();
-			connection.close();
-		}catch (SQLException ex){
-			System.out.println("Error: " + ex);
-			System.out.println("Query: " + statement.toString());
-		}
-		return user;
-	}
-
+	
 }

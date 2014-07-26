@@ -12,7 +12,7 @@
 	//********* check username password combination********
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user = ArticleDAO.authenticate(username, password);
+		User user = UserDAO.authenticate(username, password);
 		if(user!=null){
 			session.setAttribute("currentUser",user);
 			response.sendRedirect("admin.jsp");
@@ -43,12 +43,12 @@
     	<h1>Log-in</h1><br>
 		<form action="" method="POST">
 			<input type="text" name="username" placeholder="Username">
-    		<input type="password" name="password" placeholder="Password">
+			<input type="password" name="password" placeholder="Password">
     		<input type="submit" name="sumbit" class="login login-submit" value="Login">
     		<span class="message"><%=message%></span>
 		</form>
 		<div class="login-help">
-    		<a href="#">[ Register ]</a>
+    		<a href="register.jsp">[ Register ]</a>
  	 	</div>
  	 	</div>
 		</page>
