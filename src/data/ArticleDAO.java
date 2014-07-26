@@ -49,7 +49,7 @@ public class ArticleDAO {
 				article.setArticleID(rs.getInt("article_id"));
 				article.setArticleTitle(rs.getString("article_title"));
 				article.setArticleAuthor(rs.getString("article_author"));
-				article.setArticleText(rs.getString("article_text"));
+				article.setArticleText(rs.getString("article_content"));
 				article.setArticleDate(rs.getString("article_date"));
 				articles.add(article);
 			}	
@@ -67,7 +67,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_text, article_date) values(?,?,?,NOW());";
+		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_content, article_date) values(?,?,?,NOW());";
 		
 	    try{
 	    	connection = getConnection();
@@ -118,7 +118,7 @@ public class ArticleDAO {
 			article.setArticleID(rs.getInt("article_id"));
 			article.setArticleTitle(rs.getString("article_title"));
 			article.setArticleAuthor(rs.getString("article_author"));
-			article.setArticleText(rs.getString("article_text"));
+			article.setArticleText(rs.getString("article_content"));
 			article.setArticleDate(rs.getString("article_date"));
 			statement.close();
 			connection.close();
@@ -133,7 +133,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "update articles set article_title=?, article_author=?, article_text=?, article_date=NOW() where article_id=?;";
+		String preparedSQL = "update articles set article_title=?, article_author=?, article_content=?, article_date=NOW() where article_id=?;";
 		
 	    try{
 	    	connection = getConnection();
