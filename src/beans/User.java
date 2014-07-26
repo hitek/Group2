@@ -1,40 +1,34 @@
 package beans;
 
 public class User {
-	private int userID;
-	private String firstName;
-	private String lastName;
-	private String username;
-	private String password;
+	private int user_ID;
+	private int user_type;
+	private String user_name;
+	private String user_psword;
 	
-	public int getUserID() {
-		return userID;
+	public int getUser_ID() {
+		return user_ID;
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUser_ID(int user_ID) {
+		this.user_ID = user_ID;
 	}
-	public String getFirstName() {
-		return firstName;
+	public int getUser_type() {
+		return user_type;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUser_type(int user_type) {
+		this.user_type = user_type;
 	}
-	public String getLastName() {
-		return lastName;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
-	public String getUsername() {
-		return username;
+	public String getUser_psword() {
+		return user_psword;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser_psword(String user_psword) {
+		this.user_psword = user_psword;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 }

@@ -43,9 +43,9 @@ public class UserDAO {
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				user = new User();
-				user.setUserID(rs.getInt("userID"));
-				user.setFirstName(rs.getString("firstName"));
-				user.setLastName(rs.getString("lastName"));
+				user.setUser_ID(rs.getInt("userID"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_psword(rs.getString("user_psword"));
 				users.add(user);
 			}	
 			rs.close();		
@@ -62,13 +62,13 @@ public class UserDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO user(username, password) values(?,?)";
+		String preparedSQL = "INSERT INTO user(user_name, user_psword) values(?,?)";
 		
 	    try{
 	    	connection = getConnection();
 	    	statement = connection.prepareStatement(preparedSQL);
-	    	statement.setString(1, user.getUsername());
-	    	statement.setString(2, user.getPassword());
+	    	statement.setString(1, user.getUser_name());
+	    	statement.setString(2, user.getUser_psword());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -102,7 +102,7 @@ public class UserDAO {
 	public synchronized static User authenticate(String username, String password) {
 	 	User user=null;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM Users WHERE username = ? and password = ?;";
+		String preparedSQL = "SELECT * FROM User WHERE user_name = ? and user_psword = ?;";
 		
 	    try{
 	    	connection = getConnection();
@@ -112,11 +112,9 @@ public class UserDAO {
 			ResultSet rs = statement.executeQuery();
 			if(rs.next()){
 				user = new User();
-				user.setUserID(rs.getInt("user_id"));
-				user.setFirstName(rs.getString("firstName"));
-				user.setLastName(rs.getString("lastName"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				user.setUser_ID(rs.getInt("user_id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_psword(rs.getString("user_psword"));
 			}	
 			rs.close();		
 			statement.close();

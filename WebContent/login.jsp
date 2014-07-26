@@ -10,8 +10,8 @@
 
 	if(request.getMethod().equalsIgnoreCase("post")){
 	//********* check username password combination********
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String username = request.getParameter("user_name");
+		String password = request.getParameter("user_psword");
 		User user = UserDAO.authenticate(username, password);
 		if(user!=null){
 			session.setAttribute("currentUser",user);
