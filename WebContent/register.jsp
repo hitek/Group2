@@ -38,6 +38,8 @@
 			<input type="text" name="username">
 			Password
     		<input type="password" name="password">
+    		Retype Password
+    		<input type="password" name="password">
     		<input type="submit" name="sumbit" class="login login-submit" value="Register">
     		<span class="message"></span>
 		</form>

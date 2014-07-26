@@ -14,7 +14,7 @@
 	}else{
 		session.removeAttribute("message");
 	}
-	%>/
+	%>
     
 	<%
 //******************** add or update article *************************
@@ -53,13 +53,41 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		text = article.getArticleText();
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Article</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Index</title>
+	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
+	<!--[if lt IE 9]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/javascript/tinymce/tinymce.min.js"></script>
+	<script>
+		tinymce.init({
+    		selector: "textarea",
+    		theme: "modern",
+    		plugins: [
+              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+              "save table contextmenu directionality emoticons template paste textcolor autoresize"
+        	 ],
+    		width: "100%",
+    		autoresize_min_height: "100px",
+    		autoresize_max_height: "500px",
+   			content_css: "css/content.css",
+   			toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
+   		style_formats: [
+     		]
+ 		}); 
+</script>
 </head>
 <body>
+<div id="wrapper">
+	<div id="page">
 	<form action="" method="POST">
 		<%if(articleID!=null&&articleID!=""){%>
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
@@ -68,7 +96,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<p>Name:<br/>
 		<input type="text" name="author" value="<%=author%>"/></p>
 		<p>Article text:<br/>
-		<textarea name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
+		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<input type="submit" name="submit" value="Submit" />
 		<%}
 		else{%>
@@ -83,6 +111,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<%}%>
 		
 	</form>
+	</div>
+	</div>
 </body>
 </html>
 <%

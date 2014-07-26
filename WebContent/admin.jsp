@@ -26,19 +26,27 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>admin</title>
-	<link href="adminStyle.css" rel="stylesheet" type="text/css"/>
+	<title>Index</title>
+	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
+	<!--[if lt IE 9]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	
 </head>
 <body>
-<form action="AddArticle.jsp" method="get">
-	<input type="hidden" name="articleID" value="">
-	<input type="submit" name="submit" value="Add Article"/>
-</form>
-<form action="AddArticle.jsp" method="get">
-<%
-		for(i=0;i<articles.size();i++){
+<div id="wrapper">
+	<div id="page">
+		<form action="AddArticle.jsp" method="get">
+			<input type="hidden" name="articleID" value="">
+			<input type="submit" name="submit" value="Add Article"/>
+		</form>
+		<form action="AddArticle.jsp" method="get">
+		<%
+			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
-%>
+		%>
 		<div class=article>
 		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
 			<p class=ArclText><%=article.getArticleText()%><br>
@@ -47,8 +55,10 @@
 <%		
 		}
 %>		
-		<input type="submit" name="submit" value="update"/>
-		<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
-</form>
+			<input type="submit" name="submit" value="update"/>
+			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
+		</form>
+	</div>
+</div>	
 </body>
 </html>

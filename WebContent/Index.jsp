@@ -42,6 +42,6 @@
 		}
 	%>
 	</div>
-</dive>		
+</div>		
 </body>
 </html>

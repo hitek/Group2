@@ -41,13 +41,22 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		text = article.getArticleText();
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Confirm Delete</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Index</title>
+	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
+	<!--[if lt IE 9]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	
 </head>
 <body>
+<div id="wrapper">
+	<div id="page">
 	<form action="" method="POST">
 	<p> Are you sure you want to delete this article?:</p>
 		<input type="hidden" name="articleID" value="<%=articleID%>">
@@ -57,6 +66,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="submit" name="submit" value="Yes I'm sure"/>
 		<input type="submit" name="submit" formaction="admin.jsp" value="No"/>
 	</form>
+</div>
+</div>
 </body>
 </html>
 <%}%>
