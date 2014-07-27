@@ -4,10 +4,12 @@
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String user_name = request.getParameter("username");
 		String user_psword = request.getParameter("password");
+		int user_type = Integer.parseInt(request.getParameter("userType"));
 		
 		User user = new User();
 		user.setUser_name(user_name);
 		user.setUser_psword(user_psword);
+		user.setUser_type(user_type);
 		
 		int status = UserDAO.addUser(user);
 		
@@ -40,6 +42,8 @@
     		<input type="password" name="password">
     		Retype Password
     		<input type="password" name="password">
+<!--     		The value 2 will set this as a normal user. -->
+    		<input type="hidden" name="userType" value=2>  
     		<input type="submit" name="sumbit" class="login login-submit" value="Register">
     		<span class="message"></span>
 		</form>
