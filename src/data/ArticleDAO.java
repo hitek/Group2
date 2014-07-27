@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import beans.Article;
-import beans.User;
 
 public class ArticleDAO {
 
