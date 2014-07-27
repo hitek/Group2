@@ -19,26 +19,26 @@
 <%
 	//********** delete article ***************
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		String articleID = request.getParameter("articleID");
+		String userID = request.getParameter("userID");
 		
-		int status = ArticleDAO.deleteArticle(Integer.parseInt(articleID));
+		int status = UserDAO.removeUser(Integer.parseInt(userID));
 		
-		response.sendRedirect("admin.jsp");	
+		response.sendRedirect("AdminUserList.jsp");	
 		return;
 	}
 %>
 <%
-//********** get article info ************************
+//*************** get user info ****************************
 if(request.getMethod().equalsIgnoreCase("GET")){
-	String articleID = request.getParameter("articleID");
-	String title = "" ;
-	String author = "";
-	String text = "";
-	if(articleID!=""&&articleID!=null){
-		Article article = ArticleDAO.getArticle(articleID);
-		title = article.getArticleTitle();
-		author = article.getArticleAuthor();
-		text = article.getArticleText();
+	String userID = request.getParameter("userID");
+	String name = "" ;
+	String pass = "";
+	int type = 0;
+	if(userID!=""&&userID!=null){
+		User user = UserDAO.getUser(userID);
+		name = user.getUser_name();
+		pass = user.getUser_psword();
+		type = user.getUser_type();
 	}
 %>
 <!DOCTYPE html>
@@ -58,13 +58,13 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <div id="wrapper">
 	<div id="page">
 	<form action="" method="POST">
-	<p> Are you sure you want to delete this article?:</p>
-		<input type="hidden" name="articleID" value="<%=articleID%>">
-		<p>Article title:<%=title%></p>
-		<p>Name:<%=author%></p>
-		<p>Article text:<%=text%></p>
+	<p> Are you sure you want to delete this user?:</p>
+		<input type="hidden" name="userID" value="<%=userID%>">
+		<p>User_Name:<%=name%></p>
+		<p>Password:<%=pass%></p>
+		<p>Type:<%=type%></p>
 		<input type="submit" name="submit" value="Yes I'm sure"/>
-		<input type="submit" name="submit" formaction="admin.jsp" value="No"/>
+		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="No"/>
 	</form>
 </div>
 </div>
