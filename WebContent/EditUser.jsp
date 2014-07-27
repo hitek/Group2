@@ -2,55 +2,55 @@
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
     
 <% //******** Protected Page Check ***********
-	User currentUser = (User) session.getAttribute("currentUser");
-	if(currentUser==null){
-		response.sendRedirect("login.jsp");
-		return;
-	}
+	//User currentUser = (User) session.getAttribute("currentUser");
+	//if(currentUser==null){
+	//	response.sendRedirect("login.jsp");
+	//	return;
+	//}
 	
-	String message = (String) session.getAttribute("message");
-	if(message==null){
-		message="";
-	}else{
-		session.removeAttribute("message");
-	}
+	//String message = (String) session.getAttribute("message");
+	//if(message==null){
+	//	message="";
+	//}else{
+	//	session.removeAttribute("message");
+	//}
 	%>
     
 	<%
-//******************** add or update article *************************
+//******************** add or update user *************************
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		String articleID = request.getParameter("articleID");
-		String title = request.getParameter("title");
-		String author = request.getParameter("author");
-		String text = request.getParameter("text");
+		String userID = request.getParameter("userID");
+		String name = request.getParameter("name");
+		String pass = request.getParameter("password");
+		String type = request.getParameter("type");
 		
-		Article article = new Article();
-		article.setArticleTitle(title);
-		article.setArticleAuthor(author);
-		article.setArticleText(text);
-		if(articleID!=""&&articleID!=null){
-			article.setArticleID(Integer.parseInt(articleID));
-			int status = ArticleDAO.updateArticle(article);
+		User user = new User();
+		user.setUser_name(name);
+		user.setUser_psword(pass);
+		user.setUser_type(Integer.parseInt(type));
+		if(userID!=""&&userID!=null){
+			user.setUser_ID(Integer.parseInt(userID));
+			int status = UserDAO.updateUser(user);
 		}
 		else{
-			int status = ArticleDAO.addArticle(article);
+			int status = UserDAO.addUser(user);
 		}
-		response.sendRedirect("admin.jsp");	
+		response.sendRedirect("AdminUserList.jsp");	
 		return;
 	}
 %>
 <%
-//*************** get article info ****************************
+//*************** get user info ****************************
 if(request.getMethod().equalsIgnoreCase("GET")){
-	String articleID = request.getParameter("articleID");
-	String title = "" ;
-	String author = "";
-	String text = "";
-	if(articleID!=""&&articleID!=null){
-		Article article = ArticleDAO.getArticle(articleID);
-		title = article.getArticleTitle();
-		author = article.getArticleAuthor();
-		text = article.getArticleText();
+	String userID = request.getParameter("userID");
+	String name = "" ;
+	String pass = "";
+	int type = 0;
+	if(userID!=""&&userID!=null){
+		User user = UserDAO.getUser(userID);
+		name = user.getUser_name();
+		pass = user.getUser_psword();
+		type = user.getUser_type();
 	}
 %>
 <!DOCTYPE html>
@@ -89,24 +89,37 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <div id="wrapper">
 	<div id="page">
 	<form action="" method="POST">
-		<%if(articleID!=null&&articleID!=""){%>
-		<input type="hidden" name="articleID" value="<%=articleID%>"> 
-		<p>Article title:<br/>
-		<input type="text" name="title" value="<%=title%>"/></p>
-		<p>Name:<br/>
-		<input type="text" name="author" value="<%=author%>"/></p>
-		<p>Article text:<br/>
-		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
+		<%if(userID!=null&&userID!=""){//if userID is not empty, fill in data
+		%>
+		<input type="hidden" name="userID" value="<%=userID%>"> 
+		<p>User_name:<br/>
+		<input type="text" name="name" value="<%=name%>"/></p>
+		<p>Password:<br/>
+		<input type="password" name="password" value="<%=pass%>"/></p>
+		<p>User type:<br/>
+		<select name="type">
+				<option value="<%=type%>">no change</option>
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+		</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<%}
-		else{%>
-		<input type="hidden" name="articleID" value=""> 
-		<p>Article title:<br/>
-		<input type="text" name="title" value=""/></p>
-		<p>Name:<br/>
-		<input type="text" name="author" value=""/></p>
-		<p>Article text:<br/>
-		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
+		else{//if userID is null or empty, leave fields blank to add a new user
+		%>
+		<input type="hidden" name="userID" value=""> 
+		<p>User_name:<br/>
+		<input type="text" name="name" value=""/></p>
+		<p>Password:<br/>
+		<input type="password" name="password" value=""/></p>
+		<p>User type:<br/>
+			<select name="type">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<%}%>
 		

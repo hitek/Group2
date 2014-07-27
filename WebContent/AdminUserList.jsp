@@ -16,11 +16,11 @@
 %>
 
 <%//************Get Users******************
-	ArrayList<User> Users;
-	User User;
+	ArrayList<User> users;
+	User user;
 	int i;
 	
-	Users=UserDAO.getUsers();
+	users=UserDAO.getUsers();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,17 +39,18 @@
 <div id="wrapper">
 	<div id="page">
 		<form action="EditUser.jsp" method="get">
-			<input type="hidden" name="UserID" value="">
+			<input type="hidden" name="userID" value="">
 			<input type="submit" name="submit" value="Add User"/>
 		</form>
 		<form action="EditUser.jsp" method="get">
 		<%
-			for(i=0;i<Users.size();i++){
-			User = Users.get(i);
+			for(i=0;i<users.size();i++){
+			user = users.get(i);
 		%>
 		<div class=User>
-			<p class=ArclTitle><input type="radio" name="UserID" value="<%=User.getUser_ID()%>">
-			<b>UserName:<%=User.getUser_name()%> UserType:<%=User.getUser_type()%></b></p>
+			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
+			<b>UserName:<%=user.getUser_name()%> UserType:<%=user.getUser_type()%>
+			pass:<%=user.getUser_psword()%></b></p>
 		</div>
 		<%		
 		}

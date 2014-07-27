@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import beans.Article;
 import beans.User;
 
 public class UserDAO {
@@ -46,6 +47,7 @@ public class UserDAO {
 				user.setUser_ID(rs.getInt("user_ID"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_psword(rs.getString("user_psword"));
+				user.setUser_type(rs.getInt("user_type"));
 				users.add(user);
 			}	
 			rs.close();		
@@ -62,13 +64,14 @@ public class UserDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO user(user_name, user_psword) values(?,?)";
+		String preparedSQL = "INSERT INTO user(user_name, user_psword, user_type) values(?,?,?)";
 		
 	    try{
 	    	connection = getConnection();
 	    	statement = connection.prepareStatement(preparedSQL);
 	    	statement.setString(1, user.getUser_name());
 	    	statement.setString(2, user.getUser_psword());
+	    	statement.setInt(3, user.getUser_type());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -83,12 +86,59 @@ public class UserDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "DELETE FROM user WHERE userID = ?";
+		String preparedSQL = "DELETE FROM user WHERE user_ID = ?";
 		
 	    try{
 	    	connection = getConnection();
 	    	statement = connection.prepareStatement(preparedSQL);
 	    	statement.setInt(1, userID);
+			status = statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}	
+	    return status;
+	}
+	
+	public synchronized static User getUser(String userID){
+		User user = new User();
+	 	PreparedStatement statement=null;
+		String preparedSQL = "select * from user where user_id=?;";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setInt(1, Integer.parseInt(userID));
+	    	ResultSet rs = statement.executeQuery();
+	    	rs.next();
+			user.setUser_ID(rs.getInt("user_ID"));
+			user.setUser_name(rs.getString("user_name"));
+			user.setUser_psword(rs.getString("user_psword"));
+			user.setUser_type(rs.getInt("user_type"));
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}	
+	    return user;
+	}
+	
+	public synchronized static int updateUser(User user){
+		int status=0;
+		
+	 	PreparedStatement statement=null;
+		String preparedSQL = "update user set user_name=?, user_psword=?, user_type=? where user_ID=?;";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setString(1, user.getUser_name());
+	    	statement.setString(2, user.getUser_psword());
+	    	statement.setInt(3, user.getUser_type());
+	    	statement.setInt(4, user.getUser_ID());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
