@@ -43,7 +43,7 @@ public class UserDAO {
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				user = new User();
-				user.setUser_ID(rs.getInt("userID"));
+				user.setUser_ID(rs.getInt("user_ID"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_psword(rs.getString("user_psword"));
 				users.add(user);

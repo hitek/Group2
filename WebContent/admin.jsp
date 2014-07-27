@@ -15,7 +15,7 @@
 	}
 %>
 
-<%
+<%//*************get articles***************
 	ArrayList<Article> articles;
 	Article article;
 	int i;
