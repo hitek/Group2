@@ -58,8 +58,9 @@
 <%		
 		}
 %>		
-			<input type="submit" name="submit" value="update"/>
-			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
+			<input type="submit" name="submit" value="Update"/>
+			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="Delete"/>
+			<input type="submit" name="submit" formaction="createCategory.jsp" value="Create Category"/>
 		</form>
 	</div>
 </div>	

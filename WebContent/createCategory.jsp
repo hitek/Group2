@@ -17,7 +17,7 @@
 	%>
     
 	<%
-//******************** add or update article *************************
+//******************** add category *************************
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String categoryID = request.getParameter("categoryID");
  		String categoryName = request.getParameter("categoryName");
@@ -37,20 +37,6 @@
 		}
 		response.sendRedirect("Author.jsp");	
 		return;
-	}
-%>
-<%
-//*************** get article info ****************************
-if(request.getMethod().equalsIgnoreCase("GET")){
-	String categoryID = request.getParameter("categoryID");
-	String categoryName = "" ;
- 	String owner = "";
- 	int ownerID = currentUser.getUser_ID();
-	if(categoryID!=""&&categoryID!=null){
-		Category category = CategoryDAO.getCategory(categoryID);
-		categoryName = category.getCategoryName();
- 		owner = category.getCategoryOwner();
- 		//ownerID = currentUser.getUser_ID();
 	}
 %>
 <!DOCTYPE html>
@@ -89,33 +75,15 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <div id="wrapper">
 	<div id="page">
 	<form action="" method="POST">
-		<%if(categoryID!=null&&categoryID!=""){%>
-		<input type="hidden" name="categoryID" value="<%=categoryID%>"> 
-		<p>Category Name:<br/>
-		<input type="text" name="categoryName" value="<%=categoryName%>"/></p>
-<!-- 		<p>Author:<br/> -->
-		<input type="hidden" name="owner" value="<%=currentUser.getUser_name() %>"/></p>
-		<input type="hidden" name="ownerID" value="<%=currentUser.getUser_ID()%>"/></p>
-<!-- 		<p>Article text:<br/> -->
-<%-- 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p> --%>
-		<input type="submit" name="submit" value="Submit" />
-		<%}
-		else{%>
 		<input type="hidden" name="categoryID" value=""> 
 		<p>Category Name:<br/>
 		<input type="text" name="categoryName" value=""/></p>
-<!-- 		<p>Name:<br/> -->
-		<input type="hidden" name="owner" value=""/></p>
+		<input type="hidden" name="owner" value="<%=currentUser.getUser_name() %>"/></p>
 		<input type="hidden" name="ownerID" value=""/></p>
-<!-- 		<p>Article text:<br/> -->
-<!-- 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p> -->
 		<input type="submit" name="submit" value="Submit" />
-		<%}%>
 		
 	</form>
 	</div>
 	</div>
 </body>
 </html>
-<%
-}%>
