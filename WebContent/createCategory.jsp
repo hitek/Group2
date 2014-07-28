@@ -52,28 +52,11 @@
   	<![endif]-->
   	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/javascript/tinymce/tinymce.min.js"></script>
-	<script>
-		tinymce.init({
-    		selector: "textarea",
-    		theme: "modern",
-    		plugins: [
-              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-              "save table contextmenu directionality emoticons template paste textcolor autoresize"
-        	 ],
-    		width: "100%",
-    		autoresize_min_height: "100px",
-    		autoresize_max_height: "500px",
-   			content_css: "css/content.css",
-   			toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
-   		style_formats: [
-     		]
- 		}); 
-</script>
 </head>
 <body>
 <div id="wrapper">
 	<div id="page">
+	<jsp:include page="header.jsp" />
 	<form action="" method="POST">
 		<input type="hidden" name="categoryID" value=""> 
 		<p>Category Name:<br/>
@@ -81,6 +64,7 @@
 		<input type="hidden" name="owner" value="<%=currentUser.getUser_name() %>"/></p>
 		<input type="hidden" name="ownerID" value=""/></p>
 		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		
 	</form>
 	</div>

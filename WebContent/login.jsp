@@ -45,6 +45,7 @@
 			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">
     		<input type="submit" name="sumbit" class="login login-submit" value="Login">
+    		<input type="submit" name="sumbit" formaction="Index.jsp" class="login login-cancel" value="Cancel">
     		<span class="message"><%=message%></span>
 		</form>
 		<div class="login-help">

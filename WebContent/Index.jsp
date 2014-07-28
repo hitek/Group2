@@ -28,7 +28,7 @@
 <body>
 <div id="wrapper">
 	<div id="page">
-	<a href="login.jsp">login</a><br>
+	<jsp:include page="header.jsp" /><br>
 	<%
 		for(i=0;i<articles.size();i++){
 			article = articles.get(i);
