@@ -37,7 +37,7 @@ public class CategoryDAO {
 	 	ArrayList<Category> categories = new ArrayList<Category>();
 	 	Category category;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM category ORDER BY category_date DESC;";
+		String preparedSQL = "SELECT * FROM category ORDER BY cate_name DESC;";
 		
 	    try{
 	    	connection = getConnection();

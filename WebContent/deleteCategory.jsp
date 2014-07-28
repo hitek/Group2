@@ -2,7 +2,6 @@
 	import="beans.*,data.*,java.util.ArrayList" %>
 <%//******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
-
 	if(currentUser==null){
 		response.sendRedirect("login.jsp");
 		return;
@@ -16,12 +15,24 @@
 	}
 %>
 
-<%//*************get articles***************
-	ArrayList<Article> articles;
-	Article article;
+<%
+	//********** delete category ***************
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		String categoryID = request.getParameter("categoryID");
+		
+		int status = CategoryDAO.deleteCategory(Integer.parseInt(categoryID));
+		
+		response.sendRedirect("Author.jsp");	
+		return;
+	}
+%>
+
+<%//*************get category***************
+	ArrayList<Category> categories;
+	Category category;
 	int i;
 	
-	articles=ArticleDAO.getArticles();
+	categories=CategoryDAO.getCategories();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,30 +49,21 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="page">
-	<jsp:include page="header.jsp" />
-		<form action="AddArticle.jsp" method="get">
-			<input type="hidden" name="articleID" value="">
-			<input type="submit" name="submit" value="Add Article"/>
-		</form>
-		<form action="AddArticle.jsp" method="get">
+	<div id="page">		
+	<jsp:include page="header.jsp" /><br>
+		<form action="" method="POST">
 		<%
-			for(i=0;i<articles.size();i++){
-			article = articles.get(i);
-			System.out.println("test current user" + session.getAttribute("currentUser"));
+			for(i=0;i<categories.size();i++){
+			category = categories.get(i);
 		%>
-		<div class=article>
-		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
-			<p class=ArclText><%=article.getArticleText()%><br>
-			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%></p><br>
+		<div class=category>
+		<p class=CatDelete><input type="radio" name="categoryID" value="<%=category.getCategoryID()%>"><b><%=category.getCategoryName()%></b></p>
 		</div>
 <%		
 		}
 %>		
-			<input type="submit" name="submit" value="Update"/>
-			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="Delete"/>
-			<input type="submit" name="submit" formaction="createCategory.jsp" value="Create Category"/>
-			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete Category"/>
+			<input type="submit" name="submit" value="Delete"/>
+			<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		</form>
 	</div>
 </div>	

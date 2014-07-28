@@ -93,7 +93,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
 		<p>Article title:<br/>
 		<input type="text" name="title" value="<%=title%>"/></p>
-		<p>Name: <%=currentUser.getUser_name() %><br/></p>
+		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
 		<p>Article text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<input type="submit" name="submit" value="Submit" />
@@ -102,7 +102,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="articleID" value=""> 
 		<p>Article title:<br/>
 		<input type="text" name="title" value=""/></p>
-		<p>Name: <%=currentUser.getUser_name() %><br/> </p>
+		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
 		<p>Article text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
 		<input type="submit" name="submit" value="Submit" />
