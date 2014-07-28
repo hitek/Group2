@@ -88,24 +88,27 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <body>
 <div id="wrapper">
 	<div id="page">
+	<jsp:include page="header.jsp" />
 	<form action="" method="POST">
 		<%if(articleID!=null&&articleID!=""){%>
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
-		<p>Article title:<br/>
+		<p>Article Title:<br/>
 		<input type="text" name="title" value="<%=title%>"/></p>
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
-		<p>Article text:<br/>
+		<p>Article Text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		<%}
 		else{%>
 		<input type="hidden" name="articleID" value=""> 
-		<p>Article title:<br/>
+		<p>Article Title:<br/>
 		<input type="text" name="title" value=""/></p>
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
-		<p>Article text:<br/>
+		<p>Article Text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
 		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		<%}%>
 		
 	</form>

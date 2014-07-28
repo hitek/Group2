@@ -105,6 +105,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="3">3</option>
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>
 		<%}
 		else{//if userID is null or empty, leave fields blank to add a new user
 		%>
@@ -121,6 +122,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="3">3</option>
 			</select></p>
 		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>
 		<%}%>
 		
 	</form>
