@@ -146,5 +146,35 @@ public class CommentDAO {
 		}	
 	    return status;
 	}
+	
+	public synchronized static ArrayList<Comment> getArticleComments(int articleID) {
+	 	ArrayList<Comment> comments = new ArrayList<Comment>();
+	 	Comment comment;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT * FROM comments WHERE com_article_id=?";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setInt(1, articleID);
+	    	ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				comment = new Comment();
+				comment.setCommentID(rs.getInt("com_ID"));
+				comment.setCommentAuthorID(rs.getString("com_author_ID"));
+				comment.setCommentAuthor(rs.getString("com_author"));
+				comment.setCommentArticleID(rs.getString("com_article_ID"));
+				comment.setCommentText(rs.getString("com_content"));
+				comments.add(comment);
+			}	
+			rs.close();		
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		return comments;
+	}
 
 }
