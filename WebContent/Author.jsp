@@ -39,6 +39,7 @@
 <body>
 <div id="wrapper">
 	<div id="page">
+	<jsp:include page="header.jsp" />
 		<form action="AddArticle.jsp" method="get">
 			<input type="hidden" name="articleID" value="">
 			<input type="submit" name="submit" value="Add Article"/>
