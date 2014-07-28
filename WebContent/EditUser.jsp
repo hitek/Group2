@@ -99,10 +99,9 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<p>User type:<br/>
 		<select name="type">
 				<option value="<%=type%>">no change</option>
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="0">User</option>
+				<option value="1">Author</option>
+				<option value="2">Admin</option>
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>
@@ -116,10 +115,9 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="password" name="password" value=""/></p>
 		<p>User type:<br/>
 			<select name="type">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="0">User</option>
+				<option value="1">Author</option>
+				<option value="2">Admin</option>
 			</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>

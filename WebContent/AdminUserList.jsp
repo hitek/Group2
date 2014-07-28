@@ -44,12 +44,23 @@
 		</form>
 		<form action="EditUser.jsp" method="get">
 		<%
+			String typeName="";
+			int type=0;
 			for(i=0;i<users.size();i++){
-			user = users.get(i);
+				user = users.get(i);
+				type=user.getUser_type();
+				if(type==2){typeName="admin";}
+				else{
+					if(type==1){typeName="author";}
+						else{
+							if(type==0){typeName="user";}
+								else{typeName="error";}
+							}
+				}
 		%>
 		<div class=User>
 			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
-			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=user.getUser_type()%>
+			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=typeName%>
 			<b>Password:</b><%=user.getUser_psword()%></p>
 		</div>
 		<%		
