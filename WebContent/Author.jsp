@@ -43,6 +43,7 @@
 		<form action="AddArticle.jsp" method="get">
 			<input type="hidden" name="articleID" value="">
 			<input type="submit" name="submit" value="Add Article"/>
+			<input type="submit" name="submit" formaction="createCategory.jsp" value="Create Category"/>
 		</form>
 		<form action="AddArticle.jsp" method="get">
 		<%
@@ -64,8 +65,8 @@
 %>		
 			<input type="submit" name="submit" value="Update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="Delete"/>
-			<input type="submit" name="submit" formaction="createCategory.jsp" value="Create Category"/>
-			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete Category"/>
+
+<!-- 			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete Category"/> -->
 		</form>
 	</div>
 </div>	
