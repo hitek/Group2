@@ -48,15 +48,19 @@
 		<%
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
-			System.out.println("test current user" + session.getAttribute("currentUser"));
+			System.out.println("test current user " + currentUser.getUser_name());
+			System.out.println("test current article author " + article.getArticleAuthor());
+			if(currentUser.getUser_name().equals(article.getArticleAuthor())){
+				
+			
 		%>
 		<div class=article>
 		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
 			<p class=ArclText><%=article.getArticleText()%><br>
-			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%></p><br>
+			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%></p><br>			
 		</div>
 <%		
-		}
+			}}
 %>		
 			<input type="submit" name="submit" value="Update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="Delete"/>

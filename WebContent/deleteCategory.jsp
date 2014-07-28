@@ -22,7 +22,15 @@
 		
 		int status = CategoryDAO.deleteCategory(Integer.parseInt(categoryID));
 		
-		response.sendRedirect("Author.jsp");	
+		//response.sendRedirect("Author.jsp");
+		//redirects back to author or admin pages based on usertype
+				int userType = UserDAO.getUserType(currentUser.getUser_name());
+				System.out.println("test current user " + userType);
+				if(userType==0){
+					response.sendRedirect("admin.jsp");
+				}else if(userType==1){
+					response.sendRedirect("Author.jsp");
+				}
 		return;
 	}
 %>
@@ -55,12 +63,15 @@
 		<%
 			for(i=0;i<categories.size();i++){
 			category = categories.get(i);
+			System.out.println("test current user " + currentUser.getUser_ID());
+			System.out.println("test current article author " + category.getCategoryOwnerID());
+			if(currentUser.getUser_ID()==category.getCategoryOwnerID()){
 		%>
 		<div class=category>
 		<p class=CatDelete><input type="radio" name="categoryID" value="<%=category.getCategoryID()%>"><b><%=category.getCategoryName()%></b></p>
 		</div>
 <%		
-		}
+		}}
 %>		
 			<input type="submit" name="submit" value="Delete"/>
 			<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
