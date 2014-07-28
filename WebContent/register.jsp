@@ -42,8 +42,8 @@
     		<input type="password" name="password">
     		Retype Password
     		<input type="password" name="password">
-<!--     		The value 2 will set this as a normal user. -->
-    		<input type="hidden" name="userType" value=2>  
+<!--     		The value 0 will set this as a normal user. -->
+    		<input type="hidden" name="userType" value=0>  
     		<input type="submit" name="sumbit" class="login login-submit" value="Register">
     		<span class="message"></span>
 		</form>
