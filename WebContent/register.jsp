@@ -37,11 +37,11 @@
     	<h1>Register</h1><br>
 		<form action="" method="POST">
 			Username
-			<input type="text" name="username">
+			<input type="text" name="username" required>
 			Password
-    		<input type="password" name="password">
+    		<input type="password" name="password" required>
     		Retype Password
-    		<input type="password" name="password">
+    		<input type="password" name="password" required>
 <!--     		The value 0 will set this as a normal user. -->
     		<input type="hidden" name="userType" value=0>  
     		<input type="submit" name="sumbit" class="login login-submit" value="Register">
