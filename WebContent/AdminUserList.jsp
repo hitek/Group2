@@ -46,10 +46,19 @@
 		<%
 			for(i=0;i<users.size();i++){
 			user = users.get(i);
+			String userType = "";
+			if (user.getUser_type()==0){
+				userType="Admin";
+			}else if (user.getUser_type()==1){
+				userType="Author";
+			}else if (user.getUser_type()==2){
+							userType="User";
+						}
+			
 		%>
 		<div class=User>
 			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
-			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=user.getUser_type()%>
+			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=userType%>
 			<b>Password:</b><%=user.getUser_psword()%></p>
 		</div>
 		<%		

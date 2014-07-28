@@ -110,15 +110,15 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		else{//if userID is null or empty, leave fields blank to add a new user
 		%>
 		<input type="hidden" name="userID" value=""> 
-		<p>User_name:<br/>
+		<p>User Name:<br/>
 		<input type="text" name="name" value=""/></p>
 		<p>Password:<br/>
 		<input type="password" name="password" value=""/></p>
 		<p>User type:<br/>
 			<select name="type">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
+				<option value="0">Admin</option>
+				<option value="1">Author</option>
+				<option value="2">User</option>
 				<option value="3">3</option>
 			</select></p>
 		<input type="submit" name="submit" value="Submit" />

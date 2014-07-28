@@ -126,6 +126,33 @@ public class UserDAO {
 	    return user;
 	}
 	
+	public synchronized static int getUserType(String username){
+		User user = new User();
+		int userType = 3;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "select * from user where user_name=?;";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setString(1, username);
+	    	ResultSet rs = statement.executeQuery();
+	    	rs.next();
+			user.setUser_ID(rs.getInt("user_ID"));
+			user.setUser_name(rs.getString("user_name"));
+			user.setUser_psword(rs.getString("user_psword"));
+			user.setUser_type(rs.getInt("user_type"));
+			userType = user.getUser_type();
+			System.out.println("test current dao usertype " + userType);
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}	
+	    return userType;
+	}
+	
 	public synchronized static int updateUser(User user){
 		int status=0;
 		

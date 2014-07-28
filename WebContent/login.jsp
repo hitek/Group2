@@ -13,9 +13,19 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = UserDAO.authenticate(username, password);
+		//redirects users to the appropriate home page
 		if(user!=null){
 			session.setAttribute("currentUser",user);
-			response.sendRedirect("admin.jsp");
+			int userType = UserDAO.getUserType(username);
+			System.out.println("test current user " + userType);
+			if(userType==0){
+				response.sendRedirect("admin.jsp");
+			}else if(userType==1){
+				response.sendRedirect("Author.jsp");
+			}else if(userType==2){
+				response.sendRedirect("Index.jsp");
+			}
+			
 		}else{
 			session.setAttribute("message", "Invalid username/password combination");
 			response.sendRedirect("login.jsp");
