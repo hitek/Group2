@@ -38,10 +38,9 @@
 			int status = ArticleDAO.addArticle(article);
 		}
 		//redirects back to author or admin pages based on usertype
-		int userType = UserDAO.getUserType(currentUser.getUser_name());
-		if(userType==0){
+		if(currentUser.getUser_type()==2){
 			response.sendRedirect("admin.jsp");
-		}else if(userType==1){
+		}else if(currentUser.getUser_type()==1){
 			response.sendRedirect("Author.jsp");
 		}
 
@@ -62,6 +61,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		author = article.getArticleAuthor();
 		text = article.getArticleText();
 		publish = Integer.toString(article.getPublish());
+		if(author.contains("edited by")){author=author.split(", edited by")[0];}
 	}
 %>
 <!DOCTYPE html>
@@ -107,7 +107,11 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
 		<p>Article Title:<br/>
 		<input type="text" name="title" value="<%=title%>"/></p>
-		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
+		<%if(currentUser.getUser_type()!=2){%>
+		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
+		<%}else{%>
+		<input type="hidden" name="author" value="<%=author%>, edited by <%=currentUser.getUser_name()%>"/></p>
+		<%}%>
 		<p>Article Text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<p>Publish:<br/>
@@ -117,13 +121,17 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="1">Publish</option>
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
+		<%if(currentUser.getUser_type()!=2){%>
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
+		<%}else{%>
+		<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
+		<%}%>
 		<%}
 		else{%>
 		<input type="hidden" name="articleID" value=""> 
 		<p>Article Title:<br/>
 		<input type="text" name="title" value=""/></p>
-		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
+		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
 		<p>Article Text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
 		<p>Publish:<br/>
@@ -133,7 +141,11 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="1">Publish</option>
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
+		<%if(currentUser.getUser_type()!=2){%>
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
+		<%}else{%>
+		<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
+		<%}%>
 		<%}%>
 		
 	</form>

@@ -191,6 +191,7 @@ public class UserDAO {
 				user.setUser_ID(rs.getInt("user_id"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_psword(rs.getString("user_psword"));
+				user.setUser_type(rs.getInt("user_type"));
 			}	
 			rs.close();		
 			statement.close();
