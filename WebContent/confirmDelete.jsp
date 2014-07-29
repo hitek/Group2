@@ -23,7 +23,14 @@
 		
 		int status = ArticleDAO.deleteArticle(Integer.parseInt(articleID));
 		
-		response.sendRedirect("admin.jsp");	
+		//response.sendRedirect("admin.jsp");	
+		int userType = UserDAO.getUserType(currentUser.getUser_name());
+		System.out.println("test current user " + userType);
+		if(userType==0){
+			response.sendRedirect("admin.jsp");
+		}else if(userType==1){
+			response.sendRedirect("Author.jsp");
+		}
 		return;
 	}
 %>

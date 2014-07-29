@@ -66,7 +66,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_content, article_date) values(?,?,?,NOW());";
+		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_content, article_date, article_publish) values(?,?,?,NOW(), 0);";
 		
 	    try{
 	    	connection = getConnection();
