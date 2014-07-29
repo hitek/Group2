@@ -63,6 +63,37 @@ public class ArticleDAO {
 		return articles;
 	}
 	
+	//***************sort, Lee Hawthorne*****************************
+	public synchronized static ArrayList<Article> getArticlesSort(String sortType) {
+	 	ArrayList<Article> articles = new ArrayList<Article>();
+	 	Article article;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT * FROM articles ORDER BY "+sortType+" DESC;";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				article = new Article();
+				article.setArticleID(rs.getInt("article_id"));
+				article.setArticleTitle(rs.getString("article_title"));
+				article.setArticleAuthor(rs.getString("article_author"));
+				article.setArticleText(rs.getString("article_content"));
+				article.setArticleDate(rs.getString("article_date"));
+				article.setPublish(rs.getInt("article_publish"));
+				articles.add(article);
+			}	
+			rs.close();
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		return articles;
+	}
+	
 	public synchronized static int addArticle(Article article){
 		int status=0;
 		

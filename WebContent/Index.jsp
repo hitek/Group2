@@ -5,11 +5,14 @@
 %>
 	
 <%
+	String sortType=request.getParameter("sortType");//sort, Lee Hawthorne
 	ArrayList<Article> articles;
 	Article article;
 	int i;
 	
-	articles=ArticleDAO.getArticles();
+	//*******sort, Lee Hawthorne*******************
+	if(("").equals(sortType) || sortType==null || sortType.equals("article_date")){articles=ArticleDAO.getArticles();}
+	else{articles=ArticleDAO.getArticlesSort(sortType);}
 %>
 <!DOCTYPE html>
 <html>
@@ -31,6 +34,18 @@
 	<div id="page">
 	
 	<jsp:include page="header.jsp" />
+	
+	<!-- sort, Lee Hawthorne -->
+		<form action="" method="get">
+			Sort:
+			<select name="sortType">
+				<option value="article_date">Date</option>
+				<option value="cate_ID">Category</option>
+				<option value="article_author">Author</option>
+				<option value="article_title">Title</option>
+			</select>
+			<input type="submit" name="submit" value="Submit"/>
+		</form>
 	<%
 		for(i=0;i<articles.size();i++){
 			article = articles.get(i);
