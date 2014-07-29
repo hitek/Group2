@@ -120,7 +120,7 @@ public class ArticleDAO {
 			article.setArticleAuthor(rs.getString("article_author"));
 			article.setArticleText(rs.getString("article_content"));
 			article.setArticleDate(rs.getString("article_date"));
-			article.setPublish(rs.getInt("articlePublish"));
+			article.setPublish(rs.getInt("article_publish"));
 			statement.close();
 			connection.close();
 		}catch (SQLException ex){
@@ -143,7 +143,7 @@ public class ArticleDAO {
 	    	statement.setString(2, article.getArticleAuthor());
 	    	statement.setString(3, article.getArticleText());
 	    	statement.setInt(4, article.getPublish());
-	    	statement.setInt(6, article.getArticleID());
+	    	statement.setInt(5, article.getArticleID());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();

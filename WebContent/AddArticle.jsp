@@ -24,7 +24,6 @@
 		String author = request.getParameter("author");
 		String text = request.getParameter("text");
 		String publish = request.getParameter("publish");
-		System.out.println("=====test publish variable========== " + request.getParameter("publish"));
 		
 		Article article = new Article();
 		article.setArticleTitle(title);
@@ -40,7 +39,6 @@
 		}
 		//redirects back to author or admin pages based on usertype
 		int userType = UserDAO.getUserType(currentUser.getUser_name());
-		System.out.println("test current user " + userType);
 		if(userType==0){
 			response.sendRedirect("admin.jsp");
 		}else if(userType==1){
@@ -54,7 +52,6 @@
 //*************** get article info ****************************
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String articleID = request.getParameter("articleID");
-	//int type = Integer.parseInt(request.getParameter("publish"));
 	String title = "" ;
 	String author = "";
 	String text = "";

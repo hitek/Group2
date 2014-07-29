@@ -143,7 +143,6 @@ public class UserDAO {
 			user.setUser_psword(rs.getString("user_psword"));
 			user.setUser_type(rs.getInt("user_type"));
 			userType = user.getUser_type();
-			System.out.println("test current dao usertype " + userType);
 			statement.close();
 			connection.close();
 		}catch (SQLException ex){

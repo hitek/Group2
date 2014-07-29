@@ -51,8 +51,6 @@
 		<%
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
-			System.out.println("test current user " + currentUser.getUser_name());
-			System.out.println("test current article author " + article.getArticleAuthor());
 			if(currentUser.getUser_name().equals(article.getArticleAuthor())){
 				
 			
