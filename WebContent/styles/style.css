@@ -12,9 +12,9 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 #wrapper {
-	
 }
 #page {
+	padding-top: 0px;
 	padding: 50px;
   	width: 70%;
   	min-width: 500px;

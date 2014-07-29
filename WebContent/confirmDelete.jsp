@@ -47,6 +47,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Index</title>
 	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/nav.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
 	<!--[if lt IE 9]>
@@ -56,6 +57,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 </head>
 <body>
 <div id="wrapper">
+<jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	<form action="" method="POST">
 	<p> Are you sure you want to delete this article?:</p>

@@ -11,7 +11,7 @@
 	}else{
 %>
 		<div id="header">
-		Logged in as: <%=currentUser.getUser_name() %>
+		Logged in as: <%=currentUser.getUser_name()%>
 		</div>
 <%
 	}
