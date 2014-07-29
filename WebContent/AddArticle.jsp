@@ -23,11 +23,14 @@
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		String text = request.getParameter("text");
+		String publish = request.getParameter("publish");
+		System.out.println("=====test publish variable========== " + request.getParameter("publish"));
 		
 		Article article = new Article();
 		article.setArticleTitle(title);
 		article.setArticleAuthor(author);
 		article.setArticleText(text);
+		article.setPublish(Integer.parseInt(publish));
 		if(articleID!=""&&articleID!=null){
 			article.setArticleID(Integer.parseInt(articleID));
 			int status = ArticleDAO.updateArticle(article);
@@ -51,14 +54,17 @@
 //*************** get article info ****************************
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String articleID = request.getParameter("articleID");
+	//int type = Integer.parseInt(request.getParameter("publish"));
 	String title = "" ;
 	String author = "";
 	String text = "";
+	String publish = "";
 	if(articleID!=""&&articleID!=null){
 		Article article = ArticleDAO.getArticle(articleID);
 		title = article.getArticleTitle();
 		author = article.getArticleAuthor();
 		text = article.getArticleText();
+		publish = Integer.toString(article.getPublish());
 	}
 %>
 <!DOCTYPE html>
@@ -107,6 +113,12 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
 		<p>Article Text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
+		<p>Publish:<br/>
+		<select name="publish">
+				<option value="<%=publish%>">no change</option>
+				<option value="0">Private</option>
+				<option value="1">Publish</option>
+		</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		<%}
@@ -117,6 +129,12 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name() %>"/></p>
 		<p>Article Text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
+		<p>Publish:<br/>
+		<select name="publish">
+				<option value="<%=publish%>">no change</option>
+				<option value="0">Private</option>
+				<option value="1">Publish</option>
+		</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		<%}%>
