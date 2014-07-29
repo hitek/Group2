@@ -50,6 +50,7 @@ public class ArticleDAO {
 				article.setArticleAuthor(rs.getString("article_author"));
 				article.setArticleText(rs.getString("article_content"));
 				article.setArticleDate(rs.getString("article_date"));
+				article.setPublish(rs.getInt("article_publish"));
 				articles.add(article);
 			}	
 			rs.close();		

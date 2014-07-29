@@ -51,14 +51,24 @@
 		<%
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
+			//only shows articles created by the user that is actively logged on
 			if(currentUser.getUser_name().equals(article.getArticleAuthor())){
+				int publish = article.getPublish();
+				String pubStat;
+				//displays published status
+				if(publish==1){
+					pubStat="Published";
+				}else{ pubStat="Private";
+					}
+				
 				
 			
 		%>
 		<div class=article>
 		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
 			<p class=ArclText><%=article.getArticleText()%><br>
-			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%></p><br>			
+			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br>
+			Publish Status: <%=pubStat%></p><br>			
 		</div>
 <%		
 			}}
