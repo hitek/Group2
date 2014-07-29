@@ -2,6 +2,7 @@ package beans;
 
 public class Article {
 	private int articleID;
+	private int articlePublish;
 	private String articleTitle;
 	private String articleAuthor;
 	private String articleText;
@@ -36,5 +37,11 @@ public class Article {
 	}
 	public void setArticleDate(String articleDate) {
 		this.articleDate = articleDate;
+	}
+	public int getPublish() {
+		return articlePublish;
+	}
+	public void setPublish(int articlePublish) {
+		this.articlePublish = articlePublish;
 	}
 }
