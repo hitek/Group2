@@ -7,6 +7,15 @@
 		return;
 	}
 	
+	if(currentUser.getUser_type()==1){
+		response.sendRedirect("Author.jsp");//Lee Hawthorne
+		return;
+	}
+	if(currentUser.getUser_type()==0){
+		response.sendRedirect("index.jsp");//Lee Hawthorne
+		return;
+	}
+	
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
@@ -57,18 +66,15 @@
 		<%
 			for(i=0;i<categories.size();i++){
 			category = categories.get(i);
-			System.out.println("test current user " + currentUser.getUser_ID());
-			System.out.println("test current article author " + category.getCategoryOwnerID());
-			if(currentUser.getUser_ID()==category.getCategoryOwnerID()){
 		%>
 		<div class=category>
 		<p class=CatDelete><input type="radio" name="categoryID" value="<%=category.getCategoryID()%>"><b><%=category.getCategoryName()%></b></p>
 		</div>
 <%		
-		}}
+		}
 %>		
 			<input type="submit" name="submit" value="Delete"/>
-			<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
+			<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
 		</form>
 	</div>
 </div>	
