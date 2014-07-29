@@ -18,11 +18,11 @@
 			session.setAttribute("currentUser",user);
 			int userType = UserDAO.getUserType(username);
 			System.out.println("test current user " + userType);
-			if(userType==0){
+			if(userType==2){
 				response.sendRedirect("admin.jsp");
 			}else if(userType==1){
 				response.sendRedirect("Author.jsp");
-			}else if(userType==2){
+			}else if(userType==0){
 				response.sendRedirect("Index.jsp");
 			}
 			

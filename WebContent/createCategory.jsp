@@ -39,7 +39,7 @@
 		//redirects back to author or admin pages based on usertype
 				int userType = UserDAO.getUserType(currentUser.getUser_name());
 				System.out.println("test current user " + userType);
-				if(userType==0){
+				if(userType==2){
 					response.sendRedirect("admin.jsp");
 				}else if(userType==1){
 					response.sendRedirect("Author.jsp");

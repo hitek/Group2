@@ -35,7 +35,7 @@
 		else{
 			int status = UserDAO.addUser(user);
 		}
-		response.sendRedirect("AdminUserList.jsp");	
+		response.sendRedirect("AdminListUser.jsp");	
 		return;
 	}
 %>
@@ -106,7 +106,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="2">Admin</option>
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
-		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>
+		<input type="submit" name="submit" formaction="AdminListUser.jsp" value="Cancel"/>
 		<%}
 		else{//if userID is null or empty, leave fields blank to add a new user
 		%>
@@ -122,7 +122,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="2">Admin</option>
 			</select></p>
 		<input type="submit" name="submit" value="Submit" />
-		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="Cancel"/>
+		<input type="submit" name="submit" formaction="AdminListUser.jsp" value="Cancel"/>
 		<%}%>
 		
 	</form>
