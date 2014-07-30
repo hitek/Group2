@@ -1,20 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
+    pageEncoding="ISO-8859-1" import="beans.*,data.*, java.util.ArrayList"%>
 <%
+ArrayList<User> users;
+User userName;
+users = UserDAO.getUsers();
+int i;
+boolean userNameTaken = false;
+
+
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		String user_name = request.getParameter("username");
-		String user_psword = request.getParameter("password");
-		int user_type = Integer.parseInt(request.getParameter("userType"));
+		for(i=0; i<users.size(); i++){
+			userName = users.get(i);
+			if(request.getParameter("username").equals(userName.getUser_name())){
+				userNameTaken = true;
+			}
+		}
 		
-		User user = new User();
-		user.setUser_name(user_name);
-		user.setUser_psword(user_psword);
-		user.setUser_type(user_type);
-		
-		int status = UserDAO.addUser(user);
-		
-		response.sendRedirect("Index.jsp");	
-		return;
+		if(userNameTaken == false){
+			String user_name = request.getParameter("username");
+			String user_psword = request.getParameter("password");
+			int user_type = Integer.parseInt(request.getParameter("userType"));
+			
+			User user = new User();
+			user.setUser_name(user_name);
+			user.setUser_psword(user_psword);
+			user.setUser_type(user_type);
+				
+			int status = UserDAO.addUser(user);
+				
+			response.sendRedirect("Index.jsp");	
+			return;
+		}			
 	}
 %>
 <!DOCTYPE html>

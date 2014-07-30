@@ -9,6 +9,7 @@
 	ArrayList<Article> articles;
 	Article article;
 	int i;
+	int ii;
 	
 	//*******sort, Lee Hawthorne*******************
 	if(("").equals(sortType) || sortType==null || sortType.equals("article_date")){articles=ArticleDAO.getArticles();}
@@ -61,6 +62,7 @@
 	<%		
 		}
 	%>
+	
 	</div>
 </div>		
 </body>
