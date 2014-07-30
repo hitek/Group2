@@ -6,7 +6,7 @@
     session.setAttribute("articleID", articleID);
 	Article article;
 	System.out.println(articleID);
-	article=ArticleDAO.getArticle(articleID);
+	article = ArticleDAO.getArticle(articleID);
 %>
 <%//************Get Comments by articleID******************
 	ArrayList<Comment> comments;
@@ -31,6 +31,7 @@
 </head>
 <body>
 <div id="wrapper">
+<jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	 <a href="AuthorArtList.jsp">Back to Author</a>
 	  	<jsp:include page="header.jsp" />

@@ -30,7 +30,6 @@
   	
 </head>
 <body>
-<div id="wrapper">
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	
@@ -64,6 +63,10 @@
 	%>
 	
 	</div>
+	<div="sidebar">
+	<jsp:include page="/includes/sidebar.jsp" /></div>
+	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+	
 </div>		
 </body>
 </html>

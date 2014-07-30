@@ -1,0 +1,56 @@
+#head{
+    width: 100%;
+    margin: 0px;    
+}
+
+#banner{
+	padding: 20px;
+	background: #424242;
+    color: #e3e3e3;
+    text-align: center;
+}
+/*---------------------------NAV---------------------------------*/
+.nav{
+}
+.nav ul{
+	width: 100%;
+	margin: auto auto;
+	background: #AC2828;
+	background: linear-gradient(top, #AC2828 0%, #A31010 100%);
+	background: -moz-linear-gradient(top, #AC2828 0%, #A31010 100%);
+	background: -webkit-linear-gradient(top, #AC2828 0%,#A31010 100%);
+	box-shadow: 0px 0px 8px #A31010;
+ 	padding: 0 5px;
+ 	list-style: none;
+ 	display: inline-table;
+}
+.nav ul ul {
+	display: none;
+}
+.nav ul li:hover > ul {
+	display: block;
+}
+.nav ul li {
+ 	float: left;
+ 	margin: auto auto;
+ 	border-right:1px solid #8A0000;
+}
+.nav ul li:last-child{
+ 	border-right:none;
+}
+.nav ul li:hover {
+  background: #4b545f;
+  background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+  background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+  background: -webkit-linear-gradient(top, #811919 0%,#680000 40%);
+}
+.nav ul li:hover a {
+   color: #fff;
+}
+.nav ul li a {
+   font-family: 'Pathway Gothic One', sans-serif;
+   font-size:18px;
+   display: block;
+   padding: 14px 40px;
+   color: #fff; text-decoration: none;
+}
