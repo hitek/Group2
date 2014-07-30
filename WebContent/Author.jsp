@@ -67,7 +67,9 @@
 		<div class=article>
 		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
 			<p class=ArclText><%=article.getArticleText()%><br>
-			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br>
+	<%--		posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br> --%>
+			posted by <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%><br>		
+			
 			Publish Status: <%=pubStat%></p><br>			
 		</div>
 <%		
