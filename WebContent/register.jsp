@@ -68,6 +68,9 @@ boolean userNameTaken = false;
 		<div class="login-help">
     		<a href="login.jsp">[ Log-In ]</a>
  	 	</div>
+ 	 	<div="sidebar">
+			<jsp:include page="/includes/sidebar.jsp" /></div>
+		<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
  	 	</div>
 		</page>
 	</wrapper>

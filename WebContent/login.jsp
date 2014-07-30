@@ -63,6 +63,9 @@
 		<div class="login-help">
     		<a href="register.jsp">[ Register ]</a>
  	 	</div>
+ 	 	<div="sidebar">
+			<jsp:include page="/includes/sidebar.jsp" /></div>
+		<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
  	 	</div>
 		</page>
 	</wrapper>

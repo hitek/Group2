@@ -76,6 +76,9 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="submit" name="submit" formaction="admin.jsp" value="No"/>
 	</form>
 </div>
+<div="sidebar">
+	<jsp:include page="/includes/sidebar.jsp" /></div>
+	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 </div>
 </body>
 </html>
