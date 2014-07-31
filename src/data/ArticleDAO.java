@@ -189,8 +189,9 @@ public class ArticleDAO {
 	public synchronized static ArrayList<Article> getArtByAuthor(String articleAuthor) {
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;
+	 	if(articleAuthor.contains("edited by")){articleAuthor=articleAuthor.split(", edited by")[0];}//fixes "edited by" thing I added for admins, Lee Hawthorne 
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM articles WHERE article_author=? ORDER BY article_date DESC;";
+		String preparedSQL = "SELECT * FROM articles WHERE article_author=? OR article_author LIKE '"+articleAuthor+", edited by %' ORDER BY article_date DESC;";
 		
 	    try{
 	    	connection = getConnection();

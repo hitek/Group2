@@ -32,6 +32,9 @@
 
 		<form action="" method="get">
 		<p>
+		<%if(author.contains("edited by")){author=author.split(", edited by")[0];}//makes "edited by" thing I added for admins go away, Lee Hawthorne
+		//Should be able to paste this anywhere you want just the author name to show up. Just change the author variable name to whatever you're using for author name
+		%>
 		All the articles by <%=author%><br><br>
 		</p>
 		<%
