@@ -2,11 +2,12 @@
     pageEncoding="ISO-8859-1" import="beans.*,data.*,java.util.ArrayList"%>
 
 <%//*************get article by articleID***************
-    String articleID = request.getParameter("articleID");
+String articleID = request.getParameter("articleID");
     session.setAttribute("articleID", articleID);
 	Article article;
 	System.out.println(articleID);
-	article = ArticleDAO.getArticle(articleID);
+	article=ArticleDAO.getArticle(articleID);
+
 %>
 <%//************Get Comments by articleID******************
 	ArrayList<Comment> comments;
