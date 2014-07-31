@@ -7,6 +7,15 @@
 		return;
 	}
 	
+	if(currentUser.getUser_type()==1){
+		response.sendRedirect("Author.jsp");//Lee Hawthorne
+		return;
+	}
+	if(currentUser.getUser_type()==0){
+		response.sendRedirect("index.jsp");//Lee Hawthorne
+		return;
+	}
+	
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
