@@ -7,15 +7,6 @@
 		return;
 	}
 	
-	if(currentUser.getUser_type()==1){
-		response.sendRedirect("Author.jsp");//Lee Hawthorne
-		return;
-	}
-	if(currentUser.getUser_type()==0){
-		response.sendRedirect("index.jsp");//Lee Hawthorne
-		return;
-	}
-	
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
@@ -50,24 +41,39 @@
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">		
 	<jsp:include page="header.jsp" /><br>
+	<%if(currentUser.getUser_type()==2 || currentUser.getUser_type()==1){%>
 		<form action="createCategory.jsp" method="get">
 			<input type="hidden" name="categoryID" value="">
 			<input type="submit" name="submit" value="Add Category"/>
 		</form>
+	<%}%>
 		<form action="createCategory.jsp" method="get">
 		<%
 			for(i=0;i<categories.size();i++){
 			category = categories.get(i);
 		%>
+		
 		<div class=category>
-		<p class=CatDelete><input type="radio" name="categoryID" value="<%=category.getCategoryID()%>"><b><%=category.getCategoryName()%></b></p>
+		<p class=CatDelete>
+		<%if(currentUser.getUser_type()==2){%>
+		<input type="radio" name="categoryID" value="<%=category.getCategoryID()%>">
+		<%}%>
+		<b><%=category.getCategoryName()%></b></p>
 		</div>
+		
 <%		
 		}
-%>		
+%>		<%if(currentUser.getUser_type()==2){%>
 			<input type="submit" name="submit" value="Update"/>
 			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete"/>
 			<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
+		<%}
+		if(currentUser.getUser_type()==1){%>
+			<input type="submit" name="submit" formaction="Author.jsp" value="Back to author page"/>
+		<%}
+		if(currentUser.getUser_type()==0){%>
+			<input type="submit" name="submit" formaction="index.jsp" value="Back to index"/>
+		<%}%>
 		</form>
 	</div>
 	<div="sidebar">
