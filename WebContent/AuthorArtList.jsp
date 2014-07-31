@@ -15,23 +15,24 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Index</title>
 	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/nav.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
 	<!--[if lt IE 9]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   	<![endif]-->
-
+  	
 </head>
 <body>
-  	
+<jsp:include page="/includes/header.jsp" />
 <div id="wrapper">
 	<div id="page">
 	  
-	  <a href="Index.jsp">Back to Index</a>
-	    	<jsp:include page="header.jsp" />
+	  <a href="Index.jsp">Back to Index</a><br><br>
+
 		<form action="" method="get">
 		<p>
-		All the articles by <%=author%>
+		All the articles by <%=author%><br><br>
 		</p>
 		<%
 			String typeName="";
@@ -41,7 +42,7 @@
 				
 		%>
 		<div class=ArticleList>
-			<b><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle() %></a></b>
+			<b><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle() %></a>
 			<h6 align="right"><%=article.getArticleDate().substring(0, 10) %></h6>
 			
 		</div>

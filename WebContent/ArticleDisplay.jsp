@@ -23,6 +23,7 @@ String articleID = request.getParameter("articleID");
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Index</title>
 	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/nav.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/style.css" type="text/css"></link>
 	<!--[if lt IE 9]>
@@ -31,11 +32,13 @@ String articleID = request.getParameter("articleID");
   	
 </head>
 <body>
-<div id="wrapper">
 <jsp:include page="/includes/header.jsp" />
+<div id="wrapper">
 	<div id="page">
 	 <a href="AuthorArtList.jsp">Back to Author</a>
-	  	<jsp:include page="header.jsp" />
+	 <p align = "right">
+	 <a href="AddComment.jsp">Add Comment</a>
+	 </p> 	
       <form action="" method="get">
          <p align = "center" class=ArclTitle><b><%=article.getArticleTitle() %></b></p><br/>
          <p align = "right"><%=article.getArticleAuthor() %></p><br/>
