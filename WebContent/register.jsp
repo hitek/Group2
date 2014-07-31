@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*, java.util.ArrayList"%>
 <%
+String message = "Username is already taken, please try again";
+
 ArrayList<User> users;
 User userName;
 users = UserDAO.getUsers();
@@ -12,6 +14,7 @@ boolean userNameTaken = false;
 		for(i=0; i<users.size(); i++){
 			userName = users.get(i);
 			if(request.getParameter("username").equals(userName.getUser_name())){
+				session.setAttribute("message", "Username is already taken, try again");
 				userNameTaken = true;
 			}
 		}
@@ -63,7 +66,13 @@ boolean userNameTaken = false;
 <!--     		The value 0 will set this as a normal user. -->
     		<input type="hidden" name="userType" value=0>  
     		<input type="submit" name="sumbit" class="login login-submit" value="Register">
-    		<span class="message"></span>
+<%          
+	if(userNameTaken == true){
+%>
+    		<span class="message" style="color: red""><%=message %></span>
+<%
+	}
+%>
 		</form>
 		<div class="login-help">
     		<a href="login.jsp">[ Log-In ]</a>
