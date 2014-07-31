@@ -3,7 +3,7 @@
 
 <%//*************get article by articleID***************
 String articleID = request.getParameter("articleID");
-    session.setAttribute("articleID", articleID);
+	session.setAttribute("articleID", articleID);//do we really need this in session?, and is it removed anywhere?
 	Article article;
 	System.out.println(articleID);
 	article=ArticleDAO.getArticle(articleID);
@@ -35,6 +35,10 @@ String articleID = request.getParameter("articleID");
 <jsp:include page="/includes/header.jsp" />
 <div id="wrapper">
 	<div id="page">
+	 <form action="AuthorArtList.jsp">
+	 	 <input type="hidden" name="author" value="<%=article.getArticleAuthor()%>">
+	 	 <input type="submit" value="Back To Author">
+	 </form>
 	 <a href="AuthorArtList.jsp">Back to Author</a>
 	 <p align = "right">
 	 <a href="AddComment.jsp">Add Comment</a>
