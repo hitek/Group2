@@ -79,8 +79,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<p>Category Name:<br/>
 		<input type="text" name="categoryName" value=""/></p>
 		<input type="hidden" name="owner" value="<%=currentUser.getUser_name()%>"/></p>
-		<%=System.out.println(currentUser.getUser_ID())%>
-		<input type="hidden" name="ownerID" value="<%=currentUser.getUser_ID()%>;"/></p>
+		<%System.out.println(currentUser.getUser_ID());%>
+		<input type="hidden" name="ownerID" value="<%=currentUser.getUser_ID()%>"/></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
 		<%}%>
@@ -92,7 +92,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<p>Category Name:<br/>
 		<input type="text" name="categoryName" value="<%=category.getCategoryName()%>"/></p>
 		<input type="hidden" name="owner" value="<%=category.getCategoryOwner() %>"/></p>
-		<input type="hidden" name="ownerID" value="<%=category.getCategoryOwnerID() %>"/></p>
+		<input type="hidden" name="ownerID" value="<%=category.getCategoryOwnerID()%>"/></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
 	<%}} %>

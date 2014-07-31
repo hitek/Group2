@@ -54,7 +54,7 @@
 			<input type="hidden" name="categoryID" value="">
 			<input type="submit" name="submit" value="Add Category"/>
 		</form>
-		<form action="createCategory" method="GET">
+		<form action="createCategory.jsp" method="get">
 		<%
 			for(i=0;i<categories.size();i++){
 			category = categories.get(i);
