@@ -39,7 +39,7 @@ String articleID = request.getParameter("articleID");
 	 	 <input type="hidden" name="author" value="<%=article.getArticleAuthor()%>">
 	 	 <input type="submit" value="Back To Author">
 	 </form>
-	 <a href="AuthorArtList.jsp">Back to Author</a>
+	 <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">Back to Author</a><!-- this was a link to begin with so a made a working link version and a form version, Lee Hawthorne -->
 	 <p align = "right">
 	 <a href="AddComment.jsp">Add Comment</a>
 	 </p> 	
