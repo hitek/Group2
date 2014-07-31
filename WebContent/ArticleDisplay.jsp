@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*,java.util.ArrayList"%>
 
-<%//*************get article by articleID***************
+<%
+User currentUser = (User) session.getAttribute("currentUser");
+
+//*************get article by articleID***************
 String articleID = request.getParameter("articleID");
 	session.setAttribute("articleID", articleID);//do we really need this in session?, and is it removed anywhere?
 	Article article;
@@ -58,8 +61,16 @@ String articleID = request.getParameter("articleID");
          <%
          }
          %>
-   
   </form>
+  <br/>
+  <br/>
+  	<form action="" method="post">
+		<p>Add Comment</p>
+		<p>Author: <%=currentUser.getUser_name() %></p>
+		<textarea type="textarea" style="width: 600px; height: 100px;"></textarea>
+		<input type="submit" onclick="articleDisplay.jsp" value="Post" />
+		<input type="submit" name="submit" formaction="Index.jsp" value="Cancel"/>
+	</form>
 </div>
 <div="sidebar">
 	<jsp:include page="/includes/sidebar.jsp" /></div>

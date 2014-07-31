@@ -69,7 +69,7 @@ boolean userNameTaken = false;
 <%          
 	if(userNameTaken == true){
 %>
-    		<span class="message" style="color: red""><%=message %></span>
+    		<span class="message" style="color: red"><%=message %></span>
 <%
 	}
 %>
