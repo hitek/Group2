@@ -16,17 +16,20 @@
 %>
 
 <%//*************get articles***************
+	String sortType=request.getParameter("sortType");//sort, Lee Hawthorne
 	ArrayList<Article> articles;
 	Article article;
 	int i;
 	
-	articles=ArticleDAO.getArticles();
+	//*******sort, Lee Hawthorne*******************
+		if(("").equals(sortType) || sortType==null || sortType.equals("article_date")){articles=ArticleDAO.getArticles();}
+		else{articles=ArticleDAO.getArticlesSort(sortType);}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Index</title>
+	<title>Admin Index</title>
 	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/nav.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/reset.css" type="text/css"></link>
@@ -44,19 +47,34 @@
 			<input type="hidden" name="articleID" value="">
 			<input type="submit" name="submit" value="Add Article"/>
 		</form>
+		<form action="" method="get">
+			Sort:
+			<select name="sortType">
+				<option value="article_date">Date</option>
+				<option value="cate_ID">Category</option>
+				<option value="article_author">Author</option>
+				<option value="article_title">Title</option>
+			</select>
+			<input type="submit" name="submit" value="Submit"/>
+		</form>
 		<form action="AddArticle.jsp" method="get">
+		<!-- sort, Lee Hawthorne -->
 		<%
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
 		%>
+		
 		<div class=article>
-		<p class=ArclTitle><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><b><%=article.getArticleTitle()%></b></p>
-			<p class=ArclText><%=article.getArticleText()%><br>
-			posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%></p><br>
-		</div>
-<%		
+		<div id=articleheader>
+    		<div id="title"><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
+    			<p>Published by : <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%> 
+  			</div><div class="clear"></div> 
+  			<div id="text"><%=article.getArticleText()%></div>
+  			<div id=articlefooter> </div>
+  		</div>
+		<%		
 		}
-%>		
+		%>		
 			<input type="submit" name="submit" value="update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
 		</form>
