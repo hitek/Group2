@@ -22,7 +22,8 @@
 		String categoryID = request.getParameter("categoryID");
  		String categoryName = request.getParameter("categoryName");
  		String owner = request.getParameter("owner");
- 		int ownerID = currentUser.getUser_ID();
+ 		System.out.println(request.getParameter("ownerID"));
+ 		int ownerID = Integer.parseInt(request.getParameter("ownerID"));
 		
 		Category category = new Category();
 		category.setCategoryName(categoryName);
@@ -37,15 +38,20 @@
 		}
 		//response.sendRedirect("Author.jsp");
 		//redirects back to author or admin pages based on usertype
-				int userType = UserDAO.getUserType(currentUser.getUser_name());
-				System.out.println("test current user " + userType);
-				if(userType==2){
-					response.sendRedirect("admin.jsp");
-				}else if(userType==1){
+				System.out.println("test current user " + currentUser.getUser_type());
+				if(currentUser.getUser_type()==2){
+					response.sendRedirect("listCategory.jsp");
+				}else if(currentUser.getUser_type()==1){
 					response.sendRedirect("Author.jsp");
 				}
 		return;
 	}
+%>
+<%
+//*************** get category info ****************************
+if(request.getMethod().equalsIgnoreCase("GET")){
+	String categoryID = null;
+	categoryID = request.getParameter("categoryID");
 %>
 <!DOCTYPE html>
 <html>
@@ -68,14 +74,28 @@
 	<div id="page">
 	<jsp:include page="header.jsp" />
 	<form action="" method="POST">
+		<%if(categoryID==""||categoryID==null){%>
 		<input type="hidden" name="categoryID" value=""> 
 		<p>Category Name:<br/>
 		<input type="text" name="categoryName" value=""/></p>
-		<input type="hidden" name="owner" value="<%=currentUser.getUser_name() %>"/></p>
-		<input type="hidden" name="ownerID" value=""/></p>
+		<input type="hidden" name="owner" value="<%=currentUser.getUser_name()%>"/></p>
+		<%=System.out.println(currentUser.getUser_ID())%>
+		<input type="hidden" name="ownerID" value="<%=currentUser.getUser_ID()%>;"/></p>
 		<input type="submit" name="submit" value="Submit" />
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
+		<%}%>
 		
+		<!-- *****************update**********************************,Lee Hawthorne -->
+		<%if(categoryID!=""&&categoryID!=null){
+			Category category=CategoryDAO.getCategory(categoryID);%>
+		<input type="hidden" name="categoryID" value="<%=categoryID%>"> 
+		<p>Category Name:<br/>
+		<input type="text" name="categoryName" value="<%=category.getCategoryName()%>"/></p>
+		<input type="hidden" name="owner" value="<%=category.getCategoryOwner() %>"/></p>
+		<input type="hidden" name="ownerID" value="<%=category.getCategoryOwnerID() %>"/></p>
+		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
+	<%}} %>
 	</form>
 	</div>
 	<div="sidebar">

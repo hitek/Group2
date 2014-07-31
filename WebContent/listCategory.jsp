@@ -24,26 +24,12 @@
 	}
 %>
 
-<%
-	//********** delete category ***************
-	if(request.getMethod().equalsIgnoreCase("POST")){
-		String categoryID = request.getParameter("categoryID");
-		
-		int status = CategoryDAO.deleteCategory(Integer.parseInt(categoryID));
-		
-		response.sendRedirect("listCategory.jsp");
-		return;
-	}
-%>
-<%
-//*************** get user info ****************************
-if(request.getMethod().equalsIgnoreCase("GET")){
-	String categoryID = request.getParameter("categoryID");
-	String name = "" ;
-	if(categoryID!=""&&categoryID!=null){
-		Category category = CategoryDAO.getCategory(categoryID);
-		name = category.getCategoryName();
-	}
+<%//*************get category***************
+	ArrayList<Category> categories;
+	Category category;
+	int i;
+	
+	categories=CategoryDAO.getCategories();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -64,18 +50,25 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">		
 	<jsp:include page="header.jsp" /><br>
-		<body>
-<div id="wrapper">
-<jsp:include page="/includes/header.jsp" />
-	<div id="page">
-	<form action="" method="POST">
-	<p> Are you sure you want to delete this category?:</p>
-		<input type="hidden" name="categoryID" value="<%=categoryID%>">
-		<p>Name:<%=name%></p>
-		<input type="submit" name="submit" value="Yes I'm sure"/>
-		<input type="submit" name="submit" formaction="categoryList.jsp" value="No"/>
-	</form>
-	<%}%>
+		<form action="createCategory.jsp" method="get">
+			<input type="hidden" name="categoryID" value="">
+			<input type="submit" name="submit" value="Add Category"/>
+		</form>
+		<form action="createCategory" method="GET">
+		<%
+			for(i=0;i<categories.size();i++){
+			category = categories.get(i);
+		%>
+		<div class=category>
+		<p class=CatDelete><input type="radio" name="categoryID" value="<%=category.getCategoryID()%>"><b><%=category.getCategoryName()%></b></p>
+		</div>
+<%		
+		}
+%>		
+			<input type="submit" name="submit" value="Update"/>
+			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete"/>
+			<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
+		</form>
 	</div>
 	<div="sidebar">
 	<jsp:include page="/includes/sidebar.jsp" /></div>

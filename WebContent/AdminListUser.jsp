@@ -62,6 +62,7 @@
 		%>
 		<div class=User>
 			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
+			<%=user.getUser_ID()%>
 			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=typeName%>
 			<b>Password:</b><%=user.getUser_psword()%></p>
 		</div>

@@ -17,7 +17,7 @@
 %>
     
 <%
-	//********** delete article ***************
+	//********** delete user ***************
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String userID = request.getParameter("userID");
 		
