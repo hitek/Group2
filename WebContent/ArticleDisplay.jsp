@@ -22,10 +22,7 @@ String articleID = request.getParameter("articleID");
 %>
 
 <%//************Post Comments to Comment table*************** 
-System.out.println("submitType:"+request.getParameter("submitType"));
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		System.out.println("inside post submitType:"+request.getParameter("submitType"));
-		if(request.getParameter("submitType").equals("Post")){
 		String commentAuthor = currentUser.getUser_name();
 		String authorID = Integer.toString(currentUser.getUser_ID());
 		String commentText = request.getParameter("text");
@@ -40,14 +37,18 @@ System.out.println("submitType:"+request.getParameter("submitType"));
 		
 		System.out.println(commentArtID);
 		
-		
+		if(request.getParameter("submit").equals("Post")){
 			int status = CommentDAO.addComment(commentPost);
 		}
 		//************* delete comment, Lee Hawthorne****************************
-		if(request.getParameter("submitType").equals("delete")){
-			System.out.println("inside delete submitType:"+request.getParameter("submitType"));
-			String commentID = request.getParameter("commentID");
+		if(request.getParameter("submit").equals("Delete Comment")){
 			CommentDAO.deleteComment(Integer.parseInt(commentID));
+		}
+		//************* update comment, Lee Hawthorne****************************
+		if(request.getParameter("submit").equals("Update Comment")){
+			comment=CommentDAO.getComment(commentID);
+			comment.setCommentText(request.getParameter("text"));
+			CommentDAO.updateComment(comment);
 		}
 		response.sendRedirect("ArticleDisplay.jsp?articleID=" + article.getArticleID());
 		
@@ -104,17 +105,20 @@ System.out.println("submitType:"+request.getParameter("submitType"));
          <input type="hidden" name="submitType" value="delete">
          <input type="hidden" name="articleID" value="<%=article.getArticleID()%>">
          <%if(currentUser.getUser_type()==2){%>
+         	<p>Add or Update Comment</p>
+			<textarea name="text" type="textarea" style="width: 600px; height: 100px;"></textarea>
+			<input type="submit" name="submit" formaction="ArticleDisplay.jsp" value="Post"/>
 			<input type="submit" name="submit" formaction="ArticleDisplay.jsp" value="Update Comment"/>
 			<input type="submit" name="submit" formaction="ArticleDisplay.jsp" value="Delete Comment"/>
 		<%}
 		if(currentUser.getUser_type()!=2){%>
-			<input type="hidden" name="submitType" value="delete">
 			<input type="submit" name="submit" formaction="ArticleDisplay.jsp" value="Delete Comment"/>
 		<%}
        	}%>
   	</form>
   <br/>
   <br/>
+  <%if(currentUser.getUser_type()!=2){%>
   	<form action="" method="post">
 		<p>Add Comment</p>
 		<input type="hidden" name="submitType" value="Post">
@@ -123,6 +127,7 @@ System.out.println("submitType:"+request.getParameter("submitType"));
 		<input type="submit" name="submit" value="Post" />
 		<input type="submit" name="submit" formaction="Index.jsp" value="Cancel"/>
 	</form>
+	<%}%>
 </div>
 <div="sidebar">
 	<jsp:include page="/includes/sidebar.jsp" /></div>

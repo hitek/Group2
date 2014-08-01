@@ -133,7 +133,7 @@ public class CommentDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "update comments set com_content=?, com_author=? where comment_id=?;";
+		String preparedSQL = "update comments set com_content=?, com_author=? where com_id=?;";
 		
 	    try{
 	    	connection = getConnection();
