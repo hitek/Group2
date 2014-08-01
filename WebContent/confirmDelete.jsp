@@ -8,6 +8,11 @@
 		return;
 	}
 	
+	if(currentUser.getUser_type()==0){
+		response.sendRedirect("Index.jsp");//Lee Hawthorne
+		return;
+	}
+	
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
@@ -73,7 +78,11 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<p>Name:<%=author%></p>
 		<p>Article text:<%=text%></p>
 		<input type="submit" name="submit" value="Yes I'm sure"/>
+		<%if(currentUser.getUser_type()==2){%>
 		<input type="submit" name="submit" formaction="admin.jsp" value="No"/>
+		<%}else{%>
+		<input type="submit" name="submit" formaction="Author.jsp" value="No"/>
+		<%}%>
 	</form>
 </div>
 <div="sidebar">

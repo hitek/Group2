@@ -12,7 +12,7 @@
 		return;
 	}
 	if(currentUser.getUser_type()==0){
-		response.sendRedirect("index.jsp");//Lee Hawthorne
+		response.sendRedirect("Index.jsp");//Lee Hawthorne
 		return;
 	}
 	
@@ -57,6 +57,7 @@
 			<input type="hidden" name="articleID" value="">
 			<input type="submit" name="submit" value="Add Article"/>
 		</form>
+		<!-- sort, Lee Hawthorne -->
 		<form action="" method="get">
 			Sort:
 			<select name="sortType">
@@ -68,12 +69,11 @@
 			<input type="submit" name="submit" value="Submit"/>
 		</form>
 		<form action="AddArticle.jsp" method="get">
-		<!-- sort, Lee Hawthorne -->
-		<%
+		<%//**********get article************
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
 		%>
-		
+		<!-- display article -->
 		<div class=article>
 		<div id=articleheader>
     		<div id="title"><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
