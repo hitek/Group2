@@ -19,6 +19,17 @@ String articleID = request.getParameter("articleID");
 
 	comments=CommentDAO.getArticleComments(Integer.parseInt(articleID));
 %>
+
+<%//************Post Comments to Comment table*************** 
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		String commentAuthor = request.getParameter("author");
+		String commentText = request.getParameter("text");
+		
+		Comment commentPost = new Comment();
+		
+	}
+
+%>
     
 <!DOCTYPE html>
 <html>

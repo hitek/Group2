@@ -47,7 +47,7 @@ public class CommentDAO {
 				comment.setCommentID(rs.getInt("com_ID"));
 				comment.setCommentAuthorID(rs.getString("com_author_ID"));
 				comment.setCommentAuthor(rs.getString("com_author"));
-				comment.setCommentArticleID(rs.getString("com_article_ID"));
+				comment.setCommentArticleID(rs.getInt("com_article_ID"));
 				comment.setCommentText(rs.getString("com_content"));
 				comments.add(comment);
 			}	
@@ -65,13 +65,15 @@ public class CommentDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO comments(com_author,com_content) values(?,?);";
+		String preparedSQL = "INSERT INTO comments(com_ID,com_author,com_content,com_article_ID) values(?,?,?,?);";
 		
 	    try{
 	    	connection = getConnection();
 	    	statement = connection.prepareStatement(preparedSQL);
-	    	statement.setString(1, comment.getCommentAuthor());
-	    	statement.setString(2, comment.getCommentText());
+	    	statement.setInt(1, comment.getCommentID());
+	    	statement.setString(2, comment.getCommentAuthor());
+	    	statement.setString(3, comment.getCommentText());
+	    	statement.setInt(4, comment.getCommentArticleID());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -115,7 +117,7 @@ public class CommentDAO {
 	    	comment.setCommentID(rs.getInt("com_ID"));
 			comment.setCommentAuthorID(rs.getString("com_author_ID"));
 			comment.setCommentAuthor(rs.getString("com_author"));
-			comment.setCommentArticleID(rs.getString("com_article_ID"));
+			comment.setCommentArticleID(rs.getInt("com_article_ID"));
 			comment.setCommentText(rs.getString("com_content"));
 			statement.close();
 			connection.close();
@@ -163,7 +165,7 @@ public class CommentDAO {
 				comment.setCommentID(rs.getInt("com_ID"));
 				comment.setCommentAuthorID(rs.getString("com_author_ID"));
 				comment.setCommentAuthor(rs.getString("com_author"));
-				comment.setCommentArticleID(rs.getString("com_article_ID"));
+				comment.setCommentArticleID(rs.getInt("com_article_ID"));
 				comment.setCommentText(rs.getString("com_content"));
 				comments.add(comment);
 			}	

@@ -4,7 +4,7 @@ public class Comment {
 	private int commentID;
 	private String commentAuthorID;
 	private String commentAuthor;
-	private String commentArticleID;
+	private int commentArticleID;
 	private String commentText;
 	
 	public int getCommentID() {
@@ -25,10 +25,10 @@ public class Comment {
 	public void setCommentAuthor(String commentAuthor) {
 		this.commentAuthor = commentAuthor;
 	}
-	public String getCommentArticleID() {
+	public int getCommentArticleID() {
 		return commentArticleID;
 	}
-	public void setCommentArticleID(String commentArticleID) {
+	public void setCommentArticleID(int commentArticleID) {
 		this.commentArticleID = commentArticleID;
 	}
 	public String getCommentText() {
