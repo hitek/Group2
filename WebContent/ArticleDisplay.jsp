@@ -30,8 +30,12 @@ String articleID = request.getParameter("articleID");
 		Comment commentPost = new Comment();
 		commentPost.setCommentAuthor(commentAuthor);
 		commentPost.setCommentText(commentText);
+		//commentPost.setCommentID(Integer.parseInt(commentID));
+		commentPost.setCommentArticleID(Integer.parseInt(commentArtID));
 		
-		System.out.println(commentAuthor);
+		System.out.println(commentArtID);
+		
+		int status = CommentDAO.addComment(commentPost);
 		
 	}
 
