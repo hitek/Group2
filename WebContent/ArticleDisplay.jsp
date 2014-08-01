@@ -24,8 +24,14 @@ String articleID = request.getParameter("articleID");
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String commentAuthor = request.getParameter("author");
 		String commentText = request.getParameter("text");
+		String commentID = request.getParameter("commentID");
+		String commentArtID = request.getParameter("articleID");
 		
 		Comment commentPost = new Comment();
+		commentPost.setCommentAuthor(commentAuthor);
+		commentPost.setCommentText(commentText);
+		
+		//System.out.println(commentArtID);
 		
 	}
 
