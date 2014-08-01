@@ -2,18 +2,23 @@
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
     
 <% //******** Protected Page Check ***********
-	//User currentUser = (User) session.getAttribute("currentUser");
-	//if(currentUser==null){
-	//	response.sendRedirect("login.jsp");
-	//	return;
-	//}
+	User currentUser = (User) session.getAttribute("currentUser");
+	if(currentUser==null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
 	
-	//String message = (String) session.getAttribute("message");
-	//if(message==null){
-	//	message="";
-	//}else{
-	//	session.removeAttribute("message");
-	//}
+	if(currentUser.getUser_type()!=2){
+		response.sendRedirect("Index.jsp");//Lee Hawthorne
+		return;
+	}
+	
+	String message = (String) session.getAttribute("message");
+	if(message==null){
+		message="";
+	}else{
+		session.removeAttribute("message");
+	}
 	%>
     
 	<%

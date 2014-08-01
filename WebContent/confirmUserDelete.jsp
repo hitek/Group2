@@ -8,6 +8,11 @@
 		return;
 	}
 	
+	if(currentUser.getUser_type()!=2){
+		response.sendRedirect("Index.jsp");//Lee Hawthorne
+		return;
+	}
+	
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
@@ -23,7 +28,7 @@
 		
 		int status = UserDAO.removeUser(Integer.parseInt(userID));
 		
-		response.sendRedirect("AdminUserList.jsp");	
+		response.sendRedirect("AdminListUser.jsp");	
 		return;
 	}
 %>
@@ -33,12 +38,21 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	String userID = request.getParameter("userID");
 	String name = "" ;
 	String pass = "";
+	String typeName="";
 	int type = 0;
 	if(userID!=""&&userID!=null){
 		User user = UserDAO.getUser(userID);
 		name = user.getUser_name();
 		pass = user.getUser_psword();
 		type = user.getUser_type();
+	}
+	if(type==2){typeName="admin";}
+	else{
+		if(type==1){typeName="author";}
+			else{
+				if(type==0){typeName="user";}
+					else{typeName="error";}
+				}
 	}
 %>
 <!DOCTYPE html>
@@ -53,7 +67,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	<!--[if lt IE 9]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   	<![endif]-->
-  	
+<!-- confirm delete, Lee Hawthorne -->
 </head>
 <body>
 <div id="wrapper">
@@ -64,9 +78,9 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="userID" value="<%=userID%>">
 		<p>User_Name:<%=name%></p>
 		<p>Password:<%=pass%></p>
-		<p>Type:<%=type%></p>
+		<p>Type:<%=typeName%></p>
 		<input type="submit" name="submit" value="Yes I'm sure"/>
-		<input type="submit" name="submit" formaction="AdminUserList.jsp" value="No"/>
+		<input type="submit" name="submit" formaction="AdminListUser.jsp" value="No"/>
 	</form>
 </div>
 <div="sidebar">

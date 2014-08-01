@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="beans.*,data.*,java.util.ArrayList" %>
 <%//******** Protected Page Check ***********
-	//User currentUser = (User) session.getAttribute("currentUser");
-	//if(currentUser==null){
-	//	response.sendRedirect("login.jsp");
-	//	return;
-	//}
-
-	//String message = (String) session.getAttribute("message");
-	//if(message==null){
-	//	message="";
-	//}else{
-	//	session.removeAttribute("message");
-	//}
+	User currentUser = (User) session.getAttribute("currentUser");
+	if(currentUser==null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+	
+	if(currentUser.getUser_type()!=2){
+		response.sendRedirect("Index.jsp");//Lee Hawthorne
+		return;
+	}
+	
+	String message = (String) session.getAttribute("message");
+	if(message==null){
+		message="";
+	}else{
+		session.removeAttribute("message");
+	}
 %>
 
 <%//************Get Users******************
@@ -46,6 +51,7 @@
 		</form>
 		<form action="EditUser.jsp" method="get">
 		<%
+		//********************put names for type numbers, Lee Hawthorne*******************
 			String typeName="";
 			int type=0;
 			for(i=0;i<users.size();i++){
@@ -60,6 +66,7 @@
 							}
 				}
 		%>
+		<!-- list users, Lee Hawthorne -->
 		<div class=User>
 			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
 			<%=user.getUser_ID()%>
