@@ -65,7 +65,7 @@ public class CommentDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO comments(com_ID,com_author,com_content,com_article_ID) values(?,?,?,?);";
+		String preparedSQL = "INSERT INTO comments(com_ID,com_author,com_content,com_article_ID, com_author_ID) values(?,?,?,?,?);";
 		
 	    try{
 	    	connection = getConnection();
@@ -74,6 +74,7 @@ public class CommentDAO {
 	    	statement.setString(2, comment.getCommentAuthor());
 	    	statement.setString(3, comment.getCommentText());
 	    	statement.setInt(4, comment.getCommentArticleID());
+	    	statement.setInt(5, Integer.parseInt(comment.getCommentAuthorID()));
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -139,6 +140,7 @@ public class CommentDAO {
 	    	statement = connection.prepareStatement(preparedSQL);
 	    	statement.setString(1, comment.getCommentText());
 	    	statement.setString(2, comment.getCommentAuthor());
+	    	statement.setInt(3, comment.getCommentID());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
