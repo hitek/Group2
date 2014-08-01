@@ -28,7 +28,7 @@
   	<![endif]-->
   	
 </head>
-<body>
+<body link="black">
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	
@@ -51,7 +51,7 @@
 	%>
 		<div class=article>
 		<div id=articleheader>
-    		<div id="title"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
+    		<br/><div id="title"><a style="font-weight:bold; font-size:15pt" href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
     			<p>Published by : <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%> 
   			</div><div class="clear"></div> 
   			<div id="text"><%=article.getArticleText()%></div>

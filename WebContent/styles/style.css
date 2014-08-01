@@ -56,3 +56,6 @@ body {
 	padding: 10px;
 	text-align: center;
 }
+a:hover{
+	text-decoration:underline;
+}
