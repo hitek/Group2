@@ -66,7 +66,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	<jsp:include page="header.jsp" /><br>
 		<body>
 <div id="wrapper">
-<jsp:include page="/includes/header.jsp" />
+<!-- TRagsdale modified to remove duplicate header bar on page -->
+<%-- <jsp:include page="/includes/header.jsp" /> --%>
 	<div id="page">
 	
 	<!-- delete confirm, Lee Hawthorne -->
