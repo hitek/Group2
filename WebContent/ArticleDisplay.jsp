@@ -83,7 +83,7 @@ String articleID = request.getParameter("articleID");
 	 <a href="AddComment.jsp">Add Comment</a>
 	 </p> 	
       <form action="" method="post">
-         <p align = "center" class=ArclTitle><b><%=article.getArticleTitle() %></b></p><br/>
+         <p align = "center" class=ArclTitle><b style="font-weight:bold"><%=article.getArticleTitle() %></b></p><br/>
          <p align = "right"><%=article.getArticleAuthor() %></p><br/>
          <p class=ArclText><%=article.getArticleText() %></p>
          
