@@ -22,7 +22,7 @@ String articleID = request.getParameter("articleID");
 
 <%//************Post Comments to Comment table*************** 
 	if(request.getMethod().equalsIgnoreCase("POST")){
-		String commentAuthor = request.getParameter("author");
+		String commentAuthor = currentUser.getUser_name();
 		String commentText = request.getParameter("text");
 		String commentID = request.getParameter("commentID");
 		String commentArtID = request.getParameter("articleID");
@@ -31,7 +31,7 @@ String articleID = request.getParameter("articleID");
 		commentPost.setCommentAuthor(commentAuthor);
 		commentPost.setCommentText(commentText);
 		
-		//System.out.println(commentArtID);
+		System.out.println(commentAuthor);
 		
 	}
 
@@ -83,8 +83,8 @@ String articleID = request.getParameter("articleID");
   <br/>
   	<form action="" method="post">
 		<p>Add Comment</p>
-		<p>Author: <%=currentUser.getUser_name() %></p>
-		<textarea type="textarea" style="width: 600px; height: 100px;"></textarea>
+		<p"author" >Author: <%=currentUser.getUser_name() %></p>
+		<textarea name="text" type="textarea" style="width: 600px; height: 100px;"></textarea>
 		<input type="submit" onclick="articleDisplay.jsp" value="Post" />
 		<input type="submit" name="submit" formaction="Index.jsp" value="Cancel"/>
 	</form>
