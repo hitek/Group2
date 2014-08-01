@@ -30,12 +30,13 @@ String articleID = request.getParameter("articleID");
 		Comment commentPost = new Comment();
 		commentPost.setCommentAuthor(commentAuthor);
 		commentPost.setCommentText(commentText);
-		//commentPost.setCommentID(Integer.parseInt(commentID));
 		commentPost.setCommentArticleID(Integer.parseInt(commentArtID));
 		
 		System.out.println(commentArtID);
 		
 		int status = CommentDAO.addComment(commentPost);
+		
+		response.sendRedirect("ArticleDisplay.jsp?articleID=" + article.getArticleID());
 		
 	}
 
@@ -89,7 +90,7 @@ String articleID = request.getParameter("articleID");
 		<p>Add Comment</p>
 		<p"author" >Author: <%=currentUser.getUser_name() %></p>
 		<textarea name="text" type="textarea" style="width: 600px; height: 100px;"></textarea>
-		<input type="submit" onclick="articleDisplay.jsp" value="Post" />
+		<input type="submit" value="Post" />
 		<input type="submit" name="submit" formaction="Index.jsp" value="Cancel"/>
 	</form>
 </div>
