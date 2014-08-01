@@ -78,8 +78,9 @@ String articleID = request.getParameter("articleID");
 				comment = comments.get(i);
          
          %>
-         <p class = ArclComments><%=comment.getCommentAuthor() %></p><br/>
-         <p class = ArclComments><%=comment.getCommentText() %></p>
+         <br/>
+         <div class = ArclComments><%=comment.getCommentText() %></div>
+         <div class = ArclComments>By: <%=comment.getCommentAuthor() %></div>
          <%
          }
          %>
