@@ -22,14 +22,13 @@
 		String categoryID = request.getParameter("categoryID");
  		String categoryName = request.getParameter("categoryName");
  		String owner = request.getParameter("owner");
- 		System.out.println(request.getParameter("ownerID"));
  		int ownerID = Integer.parseInt(request.getParameter("ownerID"));
 		
 		Category category = new Category();
 		category.setCategoryName(categoryName);
 		category.setCategoryOwner(owner);
 		category.setCategoryOwnerID(ownerID);
-		if(categoryID!=""&&categoryID!=null){
+		if(categoryID!=""&&categoryID!=null){//update by Lee Hawthorne
 			category.setCategoryID(Integer.parseInt(categoryID));
 			int status = CategoryDAO.updateCategory(category);
 		}

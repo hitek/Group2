@@ -36,7 +36,7 @@
 	}
 %>
 <%
-//*************** get user info ****************************
+//*************** get category info, Lee Hawthorne ****************************
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String categoryID = request.getParameter("categoryID");
 	String name = "" ;
@@ -68,6 +68,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <div id="wrapper">
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
+	
+	<!-- delete confirm, Lee Hawthorne -->
 	<form action="" method="POST">
 	<p> Are you sure you want to delete this category?:</p>
 		<input type="hidden" name="categoryID" value="<%=categoryID%>">
