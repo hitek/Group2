@@ -44,14 +44,29 @@
 				article = articles.get(i);
 				
 		%>
+		
+		<%
+		User currentUser = (User) session.getAttribute("currentUser");
+		System.out.println(currentUser);
+		if(currentUser != null){
+		%>
 		<div class=ArticleList>
 			<b><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle() %></a>
 			<h6 align="right"><%=article.getArticleDate().substring(0, 10) %></h6>
 			
 		</div>
-		<%		
+		<%	
+			}else{
+		%>
+				<div class=ArticleList>
+			<b><a href="Index.jsp"><%=article.getArticleTitle() %></a>
+			<h6 align="right"><%=article.getArticleDate().substring(0, 10) %></h6>
+			
+		</div>
+		<%
+			}
 		}
-		%>		
+		%>	
 		
 		</form>
 	</div>
