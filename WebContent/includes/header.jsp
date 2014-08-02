@@ -28,7 +28,7 @@
 	<li><a href="admin.jsp">Manage Articles</a>
 	<li><a href="AdminListUser.jsp">Edit Users</a></li>
 	<li><a href="listCategory.jsp">Delete Category</a></li>
-	<li><a href="">Logout</a></li>
+	<li><a href="logOut.jsp">Logout</a></li>
 </ul>
 </div> 
 </div>	
@@ -42,7 +42,7 @@
 <ul>
 	<li class="active"><a href="Index.jsp">Home</a></li>
 	<li><a href="admin.jsp">Manage Your Articles</a>
-	<li><a href="">Logout</a></li>
+	<li><a href="logOut.jsp">Logout</a></li>
 </ul>
 </div> 
 </div>	
@@ -54,7 +54,7 @@
 <div class="nav">
 <ul>
 	<li class="active"><a href="Index.jsp">Home</a></li>
-	<li><a href="">Logout</a></li>
+	<li><a href="logOut.jsp">Logout</a></li>
 </ul>
 </div> 
 </div>	
