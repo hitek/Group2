@@ -32,8 +32,6 @@
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	
-	<jsp:include page="header.jsp" />
-	
 	<!-- sort, Lee Hawthorne -->
 		<form action="" method="get">
 			Sort:
