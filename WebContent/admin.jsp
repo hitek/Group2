@@ -76,7 +76,7 @@
 		<div class=article>
 		<div id=articleheader>
     		<div id="title"><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
-    			<p>Published by : <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%> 
+    			<p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%> 
   			</div><div class="clear"></div> 
   			<div id="text"><%=article.getArticleText()%></div>
   			<div id=articlefooter> </div>
