@@ -216,6 +216,38 @@ public class ArticleDAO {
 		}
 		return articles;
 	}
+	
+	public synchronized static ArrayList<Article> getArtBycateID(int cate_ID) {
+	 	ArrayList<Article> articles = new ArrayList<Article>();
+	 	Article article;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT * FROM articles WHERE cate_ID=? ORDER BY article_date DESC;";
+		
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setInt(1, cate_ID);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				article = new Article();
+				article.setArticleID(rs.getInt("article_id"));
+				article.setArticleTitle(rs.getString("article_title"));
+				article.setArticleAuthor(rs.getString("article_author"));
+				article.setArticleText(rs.getString("article_content"));
+				article.setArticleDate(rs.getString("article_date"));
+				articles.add(article);
+			}	
+			rs.close();		
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		return articles;
+	}
+	
+	
 
 	
 }
