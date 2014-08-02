@@ -47,7 +47,6 @@
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	<jsp:include page="header.jsp" />
-	<a href="listCategory.jsp">list ctgry</a><%//delete this%>
 		<form action="AddArticle.jsp" method="get">
 			<input type="hidden" name="articleID" value="">
 			<input type="submit" name="submit" value="Add Article"/>

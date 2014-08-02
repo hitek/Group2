@@ -74,18 +74,15 @@ String articleID = request.getParameter("articleID");
 <jsp:include page="/includes/header.jsp" />
 <div id="wrapper">
 	<div id="page">
-	 <form action="AuthorArtList.jsp">
-	 	 <input type="hidden" name="author" value="<%=article.getArticleAuthor()%>">
-	 	 <input type="submit" value="Back To Author">
-	 </form>
-	 <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">Back to Author</a><!-- this was a link to begin with so a made a working link version and a form version, Lee Hawthorne -->
-	 <p align = "right">
-	 <a href="AddComment.jsp">Add Comment</a>
-	 </p> 	
+
       <form action="" method="post">
-         <b style="font-weight:bold" align = "center" class=ArclTitle><%=article.getArticleTitle() %></b><br/>
-         <p align = "right"><%=article.getArticleAuthor() %></p><br/>
+      <span>Title: &nbsp;</span>
+         <b style="font-weight:bold" class=ArclTitle><%=article.getArticleTitle() %></b><br/>
+         <span style="float: left">Author:   &nbsp;</span>
+         <p><%=article.getArticleAuthor() %></p><br/>
+         <span>Article: </span>
          <p class=ArclText><%=article.getArticleText() %></p>
+      </form>
          
          <%
          for(i=0;i<comments.size();i++){
