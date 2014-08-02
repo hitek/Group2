@@ -157,4 +157,37 @@ public class CategoryDAO {
 		}	
 	    return status;
 	}
+	
+	public synchronized static ArrayList<Category> getCategoryByparentID(String parent_cate_ID){//Lee Hawthorne
+		ArrayList<Category> categories = new ArrayList<Category>();
+	 	Category category;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "select * from category where parent_cate_ID=?;";
+	    
+	    try{
+	    	connection = getConnection();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setInt(1, Integer.parseInt(parent_cate_ID));
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				category = new Category();
+				category.setCategoryID(rs.getInt("category_ID"));
+				category.setCategoryName(rs.getString("cate_name"));
+				category.setCategoryOwnerID(rs.getInt("cate_owner_ID"));
+				category.setCategoryOwner(rs.getString("cate_owne"));
+				category.setCategoryParentCateID(rs.getInt("parent_cate_ID"));
+				category.setCategoryParentCate(rs.getString("parent_cate"));
+				categories.add(category);
+			}	
+			rs.close();		
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+	    return categories;
+	}
+	
+	
 }
