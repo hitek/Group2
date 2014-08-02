@@ -59,7 +59,7 @@
 			}else{
 		%>
 				<div class=ArticleList>
-			<b><a href="Index.jsp"><%=article.getArticleTitle() %></a>
+			<b><a href="register.jsp"><%=article.getArticleTitle() %></a>
 			<h6 align="right"><%=article.getArticleDate().substring(0, 10) %></h6>
 			
 		</div>
