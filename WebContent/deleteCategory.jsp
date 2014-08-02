@@ -76,7 +76,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="categoryID" value="<%=categoryID%>">
 		<p>Name:<%=name%></p>
 		<input type="submit" name="submit" value="Yes I'm sure"/>
-		<input type="submit" name="submit" formaction="categoryList.jsp" value="No"/>
+		<input type="submit" name="submit" onclick="categoryList.jsp" value="No"/>
 	</form>
 	<%}%>
 	</div>
