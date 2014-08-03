@@ -105,7 +105,6 @@ String articleID = request.getParameter("articleID");
          for(i=0;i<comments.size();i++){
         	 	comment = new Comment();
 				comment = comments.get(i);
-				if(currentUser != null){
          %>
          
         <div class = ArclComments><%if(currentUser.getUser_type()==2||Integer.parseInt(comment.getCommentAuthorID())==currentUser.getUser_ID()){//radio buttons only for admin and comment author%>
@@ -114,19 +113,9 @@ String articleID = request.getParameter("articleID");
          <%=comment.getCommentText() %></div>
          <div class = ArclComments>By: <%=comment.getCommentAuthor() %></div>
          <%
+         
          }
-         }
-         if(currentUser == null){
-        	 for(i=0;i<comments.size();i++){
-         	 	comment = new Comment();
- 				comment = comments.get(i);
-
-         %>
-        <div class = ArclComments>
-         <%=comment.getCommentText() %></div>
-         <div class = ArclComments>By: <%=comment.getCommentAuthor() %></div>
-		<%
-         }}
+         
          if(displayDeleteButton==1){
          %>
          <input type="hidden" name="submitType" value="delete">
@@ -144,8 +133,7 @@ String articleID = request.getParameter("articleID");
        	}%>
        
  <%
- if(currentUser != null){
- if(currentUser.getUser_type()==0 || currentUser.getUser_type() == 1){%>
+ if(currentUser.getUser_type() !=2){%>
 	
   	<form action="" method="post">
   		<div id="commentheader"><p>Add Comment</p></div>
@@ -158,7 +146,7 @@ String articleID = request.getParameter("articleID");
 		<div id="commentfooter">
 	</form>
 		 </div>
-	<%}}%>
+	<%}%>
 </div>
 </div>
 </body>
