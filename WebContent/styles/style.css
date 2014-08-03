@@ -69,12 +69,11 @@ body {
 	font-variant: small-caps;
 }
 #article{
-	background: #eeeeee;
+	
 }
 #articlecontent {
 	text-align: left;
-	padding-top: 20px;
-	padding-bottom: 20px;
+
 }
 #articlecontent p {
 	font-size: 1em;
@@ -136,8 +135,6 @@ input[type=text]:hover, input[type=password]:hover {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
 #articlefooter: hover {
@@ -146,6 +143,16 @@ input[type=text]:hover, input[type=password]:hover {
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #357ae8;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+#articlefooter2 {
+	display: inline:block;
+	width: 50%;
+}
+#publish{
+	float: left;
+}
+#category{
+	float: right;	
 }
 .User {
 	font-size: 1em;

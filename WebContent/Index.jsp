@@ -56,19 +56,18 @@
 			//****************checks if article is published or not**************TR
 			if(article.getPublish()==1){
 	%>
-		<div class=article>
-		<div id=articleheader>
+		<div class="article">
+		<div id="articleheader">
 		<%
 		User currentUser = (User) session.getAttribute("currentUser");
 			if(currentUser == null){
 		%>
-		<div id="title"><a href="register.jsp">
-		<%=article.getArticleTitle()%></a></div>
+		<div id="title"><p><a href="register.jsp"><%=article.getArticleTitle()%></p></a></div>
 		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">
 		<%=article.getArticleAuthor()%></a> on <%=article.getArticleDate().substring(0, 10) %></div>
-  		</div>
+  		
   		<div id="articlecontent"><p><%=article.getArticleText()%></p></div>
-  		<div id=articlefooter> </div>
+  		<div id=articlefooter> 
   		  		<%
   				for(j=0;j<categories.size();j++){
 					category = categories.get(j);
@@ -80,6 +79,7 @@
 					}}
   				%>
   		</div>
+  		</div></div>
 		<%
 			}else{
 		%>

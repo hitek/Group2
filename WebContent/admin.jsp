@@ -75,12 +75,13 @@
 			<input type="submit" name="submit" value="Submit"/>
 		</form>
 		<form action="AddArticle.jsp" method="get">
-		<%//**********get article************
-			for(i=0;i<articles.size();i++){
-			article = articles.get(i);
-		%>
+			<%//**********get article************
+				for(i=0;i<articles.size();i++){
+				article = articles.get(i);
+			%>
 		<!-- display article -->
 		<div class=article>
+		
 		<div id=articleheader>
     		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></a></div>
     		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div> 
@@ -103,7 +104,8 @@
 		<div id=articlefooter>		
 			<input type="submit" name="submit" value="update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
-		</form></div>
+		</form>
+		</div>
 	</div>	
 	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 </div>	
