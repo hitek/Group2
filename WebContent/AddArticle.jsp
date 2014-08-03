@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
+    pageEncoding="ISO-8859-1" import="beans.*,data.*,java.util.ArrayList"%>
     
 <% //******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
@@ -7,12 +7,12 @@
 		response.sendRedirect("login.jsp");
 		return;
 	}
-	
+
 	if(currentUser.getUser_type()==0){
 		response.sendRedirect("Index.jsp");//Lee Hawthorne
 		return;
 	}
-	
+
 	String message = (String) session.getAttribute("message");
 	if(message==null){
 		message="";
@@ -20,6 +20,13 @@
 		session.removeAttribute("message");
 	}
 	%>
+	<%//*************get categories***************
+	ArrayList<Category> categories;
+	Category category;
+	int i;
+	
+	categories=CategoryDAO.getCategories();
+    %>
     
 	<%
 //******************** add or update article *************************
@@ -29,7 +36,7 @@
 		String author = request.getParameter("author");
 		String text = request.getParameter("text");
 		String publish = request.getParameter("publish");
-		
+
 		Article article = new Article();
 		article.setArticleTitle(title);
 		article.setArticleAuthor(author);
@@ -117,6 +124,20 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<%}else{%>
 		<input type="hidden" name="author" value="<%=author%>, edited by <%=currentUser.getUser_name()%>"/></p>
 		<%}%>
+ <!-- *************add category select*************************** -->
+	  	<p>choose category:<br/>
+		<select name="category">
+		 <%
+		    for (i=0;i<categories.size();i++) {
+		    	category = categories.get(i);
+		 %>
+				<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
+		 <%
+		    }
+		 %>
+ <!-- *********************************************************** -->
+				
+		</select></p>-->
 		<p>Article Text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<p>Publish:<br/>
@@ -152,7 +173,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
 		<%}%>
 		<%}%>
-		
+
 	</form>
 	</div>
 	<div="sidebar">

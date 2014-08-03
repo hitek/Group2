@@ -45,6 +45,8 @@ String categoryID = request.getParameter("categoryID");
 	<jsp:include page="header.jsp" />
   <form action="" method="GET">
       <div class = cate>
+  <!-- **************************display categories;********************* -->
+      
          <%
          for(i=0;i<categories.size();i++){
 				category = categories.get(i);
@@ -59,9 +61,9 @@ String categoryID = request.getParameter("categoryID");
        <div class = art>
          <%
          for(i=0;i<articles.size();i++){
-				article = articles.get(i);
-         
+				article = articles.get(i);      
          %>
+ <!-- **************************display articles;********************* -->
          <br />
          <b>Articles:</b>
          <br/>
