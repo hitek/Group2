@@ -87,13 +87,14 @@
  			
   			<div id="articlecontent"><%=article.getArticleText()%></div>
   			 <%
- 			for(j=0;j<categories.size();j++){
- 				category = categories.get(j);
- 				if(category.getCategoryID()==article.getCateID()){
- 					%>
- 					Category:  <%=category.getCategoryName()%><br>
- 					<%
- 			}}
+  			//**********setting category name for current article*************TR
+ 				for(j=0;j<categories.size();j++){
+ 					category = categories.get(j);
+ 					if(category.getCategoryID()==article.getCateID()){
+ 						%>
+ 							Category:  <%=category.getCategoryName()%><br>
+ 						<%
+ 				}}
 			%><br>
   		</div>
 		<%		
@@ -103,8 +104,7 @@
 			<input type="submit" name="submit" value="update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
 		</form></div>
-	</div>
-	
+	</div>	
 	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 </div>	
 </body>

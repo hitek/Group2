@@ -52,7 +52,9 @@
 		</form>
 	<%
 		for(i=0;i<articles.size();i++){
-			article = articles.get(i);			
+			article = articles.get(i);	
+			//****************checks if article is published or not**************TR
+			if(article.getPublish()==1){
 	%>
 		<div class=article>
 		<div id=articleheader>
@@ -99,6 +101,7 @@
   			<div id=articlefooter> </div>
   		</div>
 	<%		
+			}
 			}
 		}
 	%>

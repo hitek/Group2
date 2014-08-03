@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
     
+<!--     Basic function to create categories.  Restricted to authors and admins. TR -->
+    
 <% //******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
 	if(currentUser==null){
 		response.sendRedirect("login.jsp");
+		return;
+	}
+	if(currentUser.getUser_type()==0){
+		response.sendRedirect("index.jsp");
 		return;
 	}
 	
@@ -35,9 +41,7 @@
 		else{
 			int status = CategoryDAO.addCategory(category);
 		}
-		//response.sendRedirect("Author.jsp");
-		//redirects back to author or admin pages based on usertype
-				System.out.println("test current user " + currentUser.getUser_type());
+		//******redirects back to author or admin pages based on usertype*****TR
 				if(currentUser.getUser_type()==2){
 					response.sendRedirect("listCategory.jsp");
 				}else if(currentUser.getUser_type()==1){

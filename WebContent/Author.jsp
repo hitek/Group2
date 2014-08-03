@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="beans.*,data.*,java.util.ArrayList" %>
+<!-- 	This page will provide all the functions for authors to create,  -->
+<!-- 	delete, and update articles, and also create categories.TR -->
 <%//******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
 
@@ -21,12 +23,13 @@
 	}
 %>
 
-<%//*************get articles***************
+<%//*************get articles***************TR
 	ArrayList<Article> articles;
 	Article article;
 	int i;
 	
 	articles=ArticleDAO.getArticles();
+	//*************get categories***************TR
 	ArrayList<Category> categories;
 	Category category;
 	int j;
@@ -58,50 +61,41 @@
 		</form>
 		<form action="AddArticle.jsp" method="get">
 		<%
+		//***filling article array****TR
 			for(i=0;i<articles.size();i++){
 			article = articles.get(i);
-			//only shows articles created by the user that is actively logged on
+			//****only shows articles created by the user that is actively logged on****TR
 			if(currentUser.getUser_name().equals(article.getArticleAuthor())){
 				int publish = article.getPublish();
 				String pubStat;
-				//displays published status
-				if(publish==1){
-					pubStat="Published";
-				}else{ pubStat="Private";
-					}
-				
-				
-			
-		%>
+					//****displays published status*****TR
+					if(publish==1){
+						pubStat="Published";
+					}else{ pubStat="Private";
+					}			
+		%>	
 		<div class=article>
 		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></div>
 		<div id="author">posted by <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate().substring(0, 10) %><br></div>
 			
 			<div id="articlecontent"><%=article.getArticleText()%><br>
 			<%
-  		for(j=0;j<categories.size();j++){
-				category = categories.get(j);
-				if(category.getCategoryID()==article.getCateID()){
-					%>
-					Category:  <%=category.getCategoryName()%>
-					<%
-					
+			//**********setting category name for current article*************TR
+  				for(j=0;j<categories.size();j++){
+					category = categories.get(j);
+						if(category.getCategoryID()==article.getCateID()){
+						%>
+						Category:  <%=category.getCategoryName()%>
+						<%					
 				}}
-  		%>
-	<%--		posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br> --%>
-					
-			
-			Publish Status: <%=pubStat%></p><br>			
-		</div>
-		
-		
+  		%>			
+			<br>Publish Status: <%=pubStat%></p><br>			
+		</div>	
 <%		
 			}}
 %>		
 			<input type="submit" name="submit" value="Update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="Delete"/>
-
-<!-- 			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete Category"/> -->
 		</form>
 	</div>
 	<div="sidebar">
