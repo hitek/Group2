@@ -36,14 +36,14 @@
 		String author = request.getParameter("author");
 		String text = request.getParameter("text");
 		String publish = request.getParameter("publish");
-		String catID = request.getParameter("catID");
+		String categoryID = request.getParameter("categoryID");
 
 		Article article = new Article();
 		article.setArticleTitle(title);
 		article.setArticleAuthor(author);
 		article.setArticleText(text);
 		article.setPublish(Integer.parseInt(publish));
-		article.setCateID(Integer.parseInt(catID));
+		article.setCateID(Long.parseLong(categoryID));
 		if(articleID!=""&&articleID!=null){
 			article.setArticleID(Integer.parseInt(articleID));
 			int status = ArticleDAO.updateArticle(article);
@@ -69,12 +69,14 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	String author = "";
 	String text = "";
 	String publish = "";
+	String categoryID = "";
 	if(articleID!=""&&articleID!=null){
 		Article article = ArticleDAO.getArticle(articleID);
 		title = article.getArticleTitle();
 		author = article.getArticleAuthor();
 		text = article.getArticleText();
 		publish = Integer.toString(article.getPublish());
+		categoryID = Long.toString(article.getCateID());
 		if(author.contains("edited by")){author=author.split(", edited by")[0];}
 	}
 %>
@@ -121,41 +123,12 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
 		<p>Article Title:<br/>
 		<input type="text" name="title" value="<%=title%>"/></p>
-		<p>Category:<br/>
-		<select name="category">
-<%-- 				<option value="<%=categories.getCategoryID%>"><%=categories.getCategoryName %></option> --%>
-<!-- 				<option value="1">Private</option> -->
-<!-- 				<option value="2">Publish</option> -->
-				
-		<%					for(i=0;i<categories.size();i++){
-			category = categories.get(i);
-// 			catID = categories.getCategoryID;
-// 			catName = categories.getCategoryName;
-		%>
-		<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
-<%		
-			}
-%>				
-		</select></p>
 		<%if(currentUser.getUser_type()!=2){%>
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
 		<%}else{%>
 		<input type="hidden" name="author" value="<%=author%>, edited by <%=currentUser.getUser_name()%>"/></p>
 		<%}%>
- <!-- *************add category select*************************** -->
-<!-- 	  	<p>choose category:<br/> -->
-<!-- 		<select name="category"> -->
-<%-- 		 <% --%>
-<!-- // 		    for (i=0;i<categories.size();i++) { -->
-<!-- // 		    	category = categories.get(i); -->
-<%-- 		 %> --%>
-<%-- 				<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option> --%>
-<%-- 		 <% --%>
-<!-- // 		    } -->
-<%-- 		 %> --%>
- <!-- *********************************************************** -->
-				
-		</select></p>-->
+		
 		<p>Article Text:<br/>
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
 		<p>Publish:<br/>
@@ -163,6 +136,18 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="<%=publish%>">no change</option>
 				<option value="0">Private</option>
 				<option value="1">Publish</option>
+		</select></p>
+		<p>Category:<br/>
+		<select name="categoryID">
+				
+		<%					for(i=0;i<categories.size();i++){
+			category = categories.get(i);
+			String stringCat = Integer.toString(category.getCategoryID());
+		%>
+		<option value="<%=stringCat%>"><%=category.getCategoryName()%></option>
+<%		
+			}
+%>				
 		</select></p>
 		<input type="submit" name="submit" value="Submit" />
 		<%if(currentUser.getUser_type()!=2){%>
@@ -185,17 +170,13 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				<option value="1">Publish</option>
 		</select>
 		Category:<br/>
-		<select name="category">
-<%-- 				<option value="<%=categories.getCategoryID%>"><%=categories.getCategoryName %></option> --%>
-<!-- 				<option value="1">Private</option> -->
-<!-- 				<option value="2">Publish</option> -->
+		<select name="categoryID">
 				
 		<%					for(i=0;i<categories.size();i++){
 			category = categories.get(i);
-// 			catID = categories.getCategoryID;
-// 			catName = categories.getCategoryName;
+			String stringCat = Integer.toString(category.getCategoryID());
 		%>
-		<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
+		<option value="<%=stringCat%>"><%=category.getCategoryName()%></option>
 <%		
 			}
 %>			

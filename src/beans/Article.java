@@ -7,7 +7,7 @@ public class Article {
 	private String articleAuthor;
 	private String articleText;
 	private String articleDate;
-	private int cateID;
+	private Long cateID;
 	private String categoryName;
 	
 	public int getArticleID() {
@@ -46,10 +46,10 @@ public class Article {
 	public void setPublish(int articlePublish) {
 		this.articlePublish = articlePublish;
 	}
-	public int getCateID() {//Lee Hawthorne
+	public Long getCateID() {//Lee Hawthorne
 		return cateID;
 	}
-	public  void setCateID(int categoryID) {//Lee Hawthorne
+	public  void setCateID(Long categoryID) {//Lee Hawthorne
 		this.cateID = categoryID;
 	}
 	public String getCategoryName() {//Lee Hawthorne

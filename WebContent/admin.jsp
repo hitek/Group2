@@ -2,6 +2,12 @@
 	import="beans.*,data.*,java.util.ArrayList" %>
 <%//******** Protected Page Check ***********
 	User currentUser = (User) session.getAttribute("currentUser");
+
+	ArrayList<Category> categories;
+	Category category;
+	int j;
+
+	categories=CategoryDAO.getCategories();
 	if(currentUser==null){
 		response.sendRedirect("login.jsp");
 		return;
@@ -77,7 +83,15 @@
 		<div id=articleheader>
     		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></a></div>
     		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div> 
- 
+ 			<%
+ 			for(j=0;j<categories.size();j++){
+ 				category = categories.get(j);
+ 				if(category.getCategoryID()==article.getCateID()){
+ 					%>
+ 					Category:  <%=category.getCategoryName()%><br>
+ 					<%
+ 			}}
+			%>
   			<div id="articlecontent"><%=article.getArticleText()%></div>
   			 
   		</div>
