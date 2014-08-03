@@ -98,12 +98,7 @@ input[type=submit] {
 	text-align: center;
 }
 #footer{
-	clear:both;
-	margin-top: 200px;
-	width:100%;
-	height:80px;
-	background:#424242;
-	text-align: center;
+	
 }
 a:hover{
 	text-decoration:underline;
