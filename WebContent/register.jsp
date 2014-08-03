@@ -77,11 +77,9 @@ boolean userNameTaken = false;
 		<div class="login-help">
     		<a href="login.jsp">[ Log-In ]</a>
  	 	</div>
- 	 	<div="sidebar">
-			<jsp:include page="/includes/sidebar.jsp" /></div>
-		<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
  	 	</div>
 		</page>
+		<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 	</wrapper>
 	 <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
 </body>

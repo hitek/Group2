@@ -68,7 +68,24 @@ String articleID = request.getParameter("articleID");
 	<!--[if lt IE 9]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   	<![endif]-->
-  	
+  	<script type="text/javascript" src="<%=request.getContextPath()%>/javascript/tinymce/tinymce.min.js"></script>
+	<script>
+		tinymce.init({
+    		selector: "textarea",
+    		theme: "modern",
+    		plugins: [
+              "advlist autolink link lists charmap print preview hr anchor pagebreak spellchecker",
+              "searchreplace wordcount visualblocks visualchars code insertdatetime nonbreaking",
+              "save table directionality paste textcolor autoresize"
+        	 ],
+    		width: "100%",
+    		autoresize_min_height: "100px",
+    		autoresize_max_height: "500px",
+   			content_css: "css/content.css",
+   		style_formats: [
+     		]
+ 		}); 
+	</script>
 </head>
 <body>
 <jsp:include page="/includes/header.jsp" />
@@ -76,20 +93,18 @@ String articleID = request.getParameter("articleID");
 	<div id="page">
 
       <form action="" method="post">
-      <span>Title: &nbsp;</span>
-         <b style="font-weight:bold" class=ArclTitle><%=article.getArticleTitle() %></b><br/>
-         <span style="float: left">Author:   &nbsp;</span>
-         <p><%=article.getArticleAuthor() %></p><br/>
-         <span>Article: </span>
-         <p class=ArclText><%=article.getArticleText() %></p>
+		<div id="articleheader">
+		<div id="title"><%=article.getArticleTitle() %></div>
+        <div id="author">Author: <%=article.getArticleAuthor() %></div>
+        </div>
+        <div id="articlecontent"><%=article.getArticleText() %></div>
       </form>
-         
+      
+         <div id="commentsbox">
          <%
          for(i=0;i<comments.size();i++){
 				comment = comments.get(i);
-         
          %>
-         <br/>
         <div class = ArclComments><%if(currentUser.getUser_type()==2||Integer.parseInt(comment.getCommentAuthorID())==currentUser.getUser_ID()){//radio buttons only for admin and comment author%>
 		<input type="radio" name="commentID" value="<%=comment.getCommentID()%>">
 		<%displayDeleteButton=1;}%>
@@ -112,23 +127,22 @@ String articleID = request.getParameter("articleID");
 			<input type="submit" name="submit" formaction="ArticleDisplay.jsp" value="Delete Comment"/>
 		<%}
        	}%>
-  	</form>
-  <br/>
-  <br/>
-  <%if(currentUser.getUser_type()!=2){%>
+       
+ <%if(currentUser.getUser_type()!=2){%>
+	
   	<form action="" method="post">
-		<p>Add Comment</p>
+  		<div id="commentheader"><p>Add Comment</p></div>
 		<input type="hidden" name="submitType" value="Post">
-		<p"author" >Author: <%=currentUser.getUser_name() %></p>
+		<div id="commentauthor"><p>Author: <%=currentUser.getUser_name() %></p></div>
 		<textarea name="text" type="textarea" style="width: 600px; height: 100px;"></textarea>
+		<div id="commentfooter">
 		<input type="submit" name="submit" value="Post" />
 		<input type="submit" name="submit" formaction="Index.jsp" value="Cancel"/>
+		<div id="commentfooter">
 	</form>
+		 </div>
 	<%}%>
 </div>
-<div="sidebar">
-	<jsp:include page="/includes/sidebar.jsp" /></div>
-	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 </div>
 </body>
 </html>

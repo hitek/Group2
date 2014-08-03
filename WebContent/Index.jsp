@@ -53,11 +53,13 @@
 		User currentUser = (User) session.getAttribute("currentUser");
 			if(currentUser == null){
 		%>
-		<br/><div id="title"><a style="font-weight:bold; font-size:15pt" href="register.jsp"><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
-    			<p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%> 
-  			</div><div class="clear"></div> 
-  			<div id="text"><%=article.getArticleText()%></div>
-  			<div id=articlefooter> </div>
+		<div id="title"><a href="register.jsp">
+		<%=article.getArticleTitle()%></a></div>
+		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">
+		<%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div>
+  		</div>
+  		<div id="articlecontent"><p><%=article.getArticleText()%></p></div>
+  		<div id=articlefooter> </div>
   		</div>
 		<%
 			}else{
