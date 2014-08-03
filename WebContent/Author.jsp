@@ -27,6 +27,10 @@
 	int i;
 	
 	articles=ArticleDAO.getArticles();
+	ArrayList<Category> categories;
+	Category category;
+	int j;
+	categories=CategoryDAO.getCategories();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -72,12 +76,24 @@
 		<div class=article>
 		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></div>
 		<div id="author">posted by <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate().substring(0, 10) %><br></div>
+			<%
+  		for(j=0;j<categories.size();j++){
+				category = categories.get(j);
+				if(category.getCategoryID()==article.getCateID()){
+					%>
+					Category:  <%=category.getCategoryName()%><br>
+					<%
+					
+				}}
+  		%>
 			<div id="articlecontent"><%=article.getArticleText()%><br>
 	<%--		posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br> --%>
 					
 			
 			Publish Status: <%=pubStat%></p><br>			
 		</div>
+		
+		
 <%		
 			}}
 %>		

@@ -8,6 +8,7 @@
 	int j;
 
 	categories=CategoryDAO.getCategories();
+	
 	if(currentUser==null){
 		response.sendRedirect("login.jsp");
 		return;
