@@ -126,7 +126,7 @@ String articleID = request.getParameter("articleID");
          <%=comment.getCommentText() %></div>
          <div class = ArclComments>By: <%=comment.getCommentAuthor() %></div>
 		<%
-         }
+         }}
          if(displayDeleteButton==1){
          %>
          <input type="hidden" name="submitType" value="delete">
@@ -158,7 +158,7 @@ String articleID = request.getParameter("articleID");
 		<div id="commentfooter">
 	</form>
 		 </div>
-	<%}}}%>
+	<%}}%>
 </div>
 </div>
 </body>
