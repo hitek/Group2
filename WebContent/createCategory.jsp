@@ -75,7 +75,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	<form action="" method="POST">
 		<%if(categoryID==""||categoryID==null){%>
 		<input type="hidden" name="categoryID" value=""> 
-		<p>Category Name:<br/>
+		<p>Category Name: 
 		<input type="text" name="categoryName" value=""/></p>
 		<input type="hidden" name="owner" value="<%=currentUser.getUser_name()%>"/></p>
 		<%System.out.println(currentUser.getUser_ID());%>

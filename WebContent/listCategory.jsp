@@ -67,7 +67,7 @@
 %>		<%if(currentUser.getUser_type()==2){%>
 			<input type="submit" name="submit" value="Update"/>
 			<input type="submit" name="submit" formaction="deleteCategory.jsp" value="Delete"/>
-			<input type="submit" name="submit" formaction="admin.jsp" value="Back to admin index"/>
+			<input type="submit" name="submit" formaction="admin.jsp" value="Cancel"/>
 		<%}
 		if(currentUser.getUser_type()==1){%>
 			<input type="submit" name="submit" formaction="Author.jsp" value="Back to author page"/>

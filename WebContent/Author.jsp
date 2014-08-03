@@ -76,17 +76,18 @@
 		<div class=article>
 		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></div>
 		<div id="author">posted by <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate().substring(0, 10) %><br></div>
+			
+			<div id="articlecontent"><%=article.getArticleText()%><br>
 			<%
   		for(j=0;j<categories.size();j++){
 				category = categories.get(j);
 				if(category.getCategoryID()==article.getCateID()){
 					%>
-					Category:  <%=category.getCategoryName()%><br>
+					Category:  <%=category.getCategoryName()%>
 					<%
 					
 				}}
   		%>
-			<div id="articlecontent"><%=article.getArticleText()%><br>
 	<%--		posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br> --%>
 					
 			

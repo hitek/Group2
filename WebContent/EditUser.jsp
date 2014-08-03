@@ -99,7 +99,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<%if(userID!=null&&userID!=""){//if userID is not empty, fill in data
 		%>
 		<input type="hidden" name="userID" value="<%=userID%>"> 
-		<p>User_name:<br/>
+		<p>User Name:<br/>
 		<input type="text" name="name" value="<%=name%>"/></p>
 		<p>Password:<br/>
 		<input type="password" name="password" value="<%=pass%>"/></p>
@@ -116,7 +116,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		else{//if userID is null or empty, leave fields blank to add a new user
 		%>
 		<input type="hidden" name="userID" value=""> 
-		<p>User_name:<br/>
+		<p>User Name:<br/>
 		<input type="text" name="name" value=""/></p>
 		<p>Password:<br/>
 		<input type="password" name="password" value=""/></p>

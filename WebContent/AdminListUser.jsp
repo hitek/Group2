@@ -69,9 +69,9 @@
 		<!-- list users, Lee Hawthorne -->
 		<div class=User>
 			<p class=ArclTitle><input type="radio" name="userID" value="<%=user.getUser_ID()%>">
-			<%=user.getUser_ID()%>
-			<b>UserName:</b><%=user.getUser_name()%> <b>UserType:</b><%=typeName%>
-			<b>Password:</b><%=user.getUser_psword()%></p>
+<%-- 			<%=user.getUser_ID()%> --%>
+			<b>User Name: </b><%=user.getUser_name()%> <b> User Type: </b><%=typeName%>
+			<b> Password: </b><%=user.getUser_psword()%></p>
 		</div>
 		<%		
 		}

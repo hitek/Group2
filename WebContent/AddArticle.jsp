@@ -139,6 +139,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		</select></p>
 		<p>Category:<br/>
 		<select name="categoryID">
+		<option value="<%=categoryID%>">no change</option>
 				
 		<%					for(i=0;i<categories.size();i++){
 			category = categories.get(i);
@@ -165,18 +166,17 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
 		Publish:<br/>
 		<select name="publish">
-				<option value="<%=publish%>">no change</option>
 				<option value="0">Private</option>
 				<option value="1">Publish</option>
 		</select>
 		Category:<br/>
 		<select name="categoryID">
-				
-		<%					for(i=0;i<categories.size();i++){
-			category = categories.get(i);
-			String stringCat = Integer.toString(category.getCategoryID());
-		%>
-		<option value="<%=stringCat%>"><%=category.getCategoryName()%></option>
+				<option value="34">Default</option>
+					<%					for(i=0;i<categories.size();i++){
+						category = categories.get(i);
+						String stringCat = Integer.toString(category.getCategoryID());
+					%>
+				<option value="<%=stringCat%>"><%=category.getCategoryName()%></option>
 <%		
 			}
 %>			

@@ -65,36 +65,37 @@
 		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">
 		<%=article.getArticleAuthor()%></a> on <%=article.getArticleDate().substring(0, 10) %></div>
   		</div>
-  		<%
-  		for(j=0;j<categories.size();j++){
-				category = categories.get(j);
-				if(category.getCategoryID()==article.getCateID()){
-					%>
-					Category:  <%=category.getCategoryName()%><br>
-					<%
-					
-				}}
-  		%>
   		<div id="articlecontent"><p><%=article.getArticleText()%></p></div>
   		<div id=articlefooter> </div>
+  		  		<%
+  				for(j=0;j<categories.size();j++){
+					category = categories.get(j);
+						if(category.getCategoryID()==article.getCateID()){
+						%>
+						Category:  <%=category.getCategoryName()%><br>
+						<%
+					
+					}}
+  				%>
   		</div>
 		<%
 			}else{
 		%>
     		<br/><div id="title"><a style="font-weight:bold; font-size:15pt" href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
     			<p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%> <br>
-    				<%
-  		for(k=0;k<categories.size();k++){
-				category = categories.get(k);
-				if(category.getCategoryID()==article.getCateID()){
-					%>
-					Category:  <%=category.getCategoryName()%><br>
-					<%
-					
-				}}
-  		%>
+    				
   			</div><div class="clear"></div> 
   			<div id="text"><%=article.getArticleText()%></div>
+  			<%
+  			for(k=0;k<categories.size();k++){
+					category = categories.get(k);
+					if(category.getCategoryID()==article.getCateID()){
+						%>
+						Category:  <%=category.getCategoryName()%><br>
+						<%
+					
+					}}
+  			%>
   			<div id=articlefooter> </div>
   		</div>
 	<%		
