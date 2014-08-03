@@ -70,7 +70,7 @@
 			
 		%>
 		<div class=article>
-		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></div>
+		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></div>
 		<div id="author">posted by <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%><br></div>
 			<div id="articlecontent"><%=article.getArticleText()%><br>
 	<%--		posted by <%=article.getArticleAuthor()%> on <%=article.getArticleDate()%><br> --%>
