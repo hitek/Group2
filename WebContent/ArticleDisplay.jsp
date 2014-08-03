@@ -4,7 +4,7 @@
 <%
 User currentUser = (User) session.getAttribute("currentUser");
 
-//*************get article by articleID***************
+//*************get article by articleID***************Steve Li
 String articleID = request.getParameter("articleID");
 	session.setAttribute("articleID", articleID);//do we really need this in session?, and is it removed anywhere?
 	Article article;
@@ -149,5 +149,9 @@ String articleID = request.getParameter("articleID");
 	<%}%>
 </div>
 </div>
+	<div="sidebar">
+	<jsp:include page="/includes/sidebar.jsp" /></div>
+	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+		
 </body>
 </html>

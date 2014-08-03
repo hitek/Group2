@@ -4,7 +4,7 @@
 <%
 User currentUser = (User) session.getAttribute("currentUser");
 
-//*************get categories by cateID***************
+//*************get categories by cateID***************Steve Li
 
 String categoryID = request.getParameter("categoryID");
 	session.setAttribute("catogeryID",categoryID);
@@ -16,7 +16,7 @@ String categoryID = request.getParameter("categoryID");
 
 %>
 <%
-//*************get articles by cateID***************
+//*************get articles by cateID***************Steve Li
     ArrayList<Article> articles;
 	Article article;
 	
@@ -44,6 +44,9 @@ String categoryID = request.getParameter("categoryID");
 	<div id="page">
 	<jsp:include page="header.jsp" />
   <form action="" method="GET">
+         <br />
+         <b>Categories:</b>
+         <br/>
       <div class = cate>
   <!-- **************************display categories;********************* -->
       
@@ -52,12 +55,15 @@ String categoryID = request.getParameter("categoryID");
 				category = categories.get(i);
          
          %>
-         <br/>
+         <br />
           <a href="DisplayByCate2.jsp?categoryID=<%=category.getCategoryID() %> " ><%=category.getCategoryName()%></a><br />
          <%
          }
          %>
        </div>
+       <br />
+         <b>Articles:</b>
+         <br />
        <div class = art>
          <%
          for(i=0;i<articles.size();i++){
@@ -65,8 +71,6 @@ String categoryID = request.getParameter("categoryID");
          %>
  <!-- **************************display articles;********************* -->
          <br />
-         <b>Articles:</b>
-         <br/>
           <a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID() %>" ><%=article.getArticleTitle()%></a><br />
          <%
          }
@@ -75,6 +79,9 @@ String categoryID = request.getParameter("categoryID");
   </form>
   </div>
  </div>
-
+	<div="sidebar">
+	<jsp:include page="/includes/sidebar.jsp" /></div>
+	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+		
 </body>
 </html>

@@ -224,7 +224,7 @@ public class ArticleDAO {
 		return articles;
 	}
 	
-	public synchronized static ArrayList<Article> getArtBycateID(int cate_ID) {
+	public synchronized static ArrayList<Article> getArtBycateID(int cate_ID) {  //Steve Li
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;
 	 	PreparedStatement statement=null;

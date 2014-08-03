@@ -158,7 +158,7 @@ public class CategoryDAO {
 	    return status;
 	}
 	
-	public synchronized static ArrayList<Category> getCategoryByparentID(String parent_cate_ID){//Lee Hawthorne
+	public synchronized static ArrayList<Category> getCategoryByparentID(String parent_cate_ID){//Steve Li
 		ArrayList<Category> categories = new ArrayList<Category>();
 	 	Category category;
 	 	PreparedStatement statement=null;

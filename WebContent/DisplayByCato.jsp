@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*,java.util.ArrayList"%>
 
-<%//*************get articles***************
+<%//*************get articles***************Steve Li
 	ArrayList<Category> categories;
 	Category category;
 	int i;
 	
 	categories =CategoryDAO.getCategories();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -28,8 +28,12 @@
 	<div id="page">
 	<jsp:include page="header.jsp" />
 	<form action="" method="post">
+        <br />
+         <b>Categories:</b>
+         <br/>
+	 <div class=article>
+		<div id=articleheader>
 	
-	<table border="0" >
     
          <%
          int parentID;
@@ -37,23 +41,28 @@
 				category = categories.get(i);
 				parentID= category.getCategoryParentCateID();
          %>
-         <tr>
+       
          
-         <td width="250px" height = "50%" >
+        
          <%
          if (parentID==0) {
          %>
+        <br />
          <a href="DisplayByCate2.jsp?categoryID=<%=category.getCategoryID() %> " ><%= category.getCategoryName()%></a> 
-         </td>
+        <br />
          <%
          }}
          %>
-         </tr>
-         
-    </table>
+      
+         </div>
+         </div>
+    
     </form>
     </div>
  </div>
-
+	<div="sidebar">
+	<jsp:include page="/includes/sidebar.jsp" /></div>
+	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+		
 </body>
 </html>
