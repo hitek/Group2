@@ -67,7 +67,7 @@ String categoryID = request.getParameter("categoryID");
          <br />
          <b>Articles:</b>
          <br/>
-          <a href="ArticleDisplay.jsp?categoryID=<%=category.getCategoryID() %>" ><%=article.getArticleTitle()%></a><br />
+          <a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID() %>" ><%=article.getArticleTitle()%></a><br />
          <%
          }
          %>
