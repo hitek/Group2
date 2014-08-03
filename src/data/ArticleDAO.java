@@ -38,6 +38,7 @@ public class ArticleDAO {
 	 	Article article;
 	 	PreparedStatement statement=null;
 		String preparedSQL = "SELECT * FROM articles ORDER BY article_date DESC;";
+//		String preparedSQL = "select * from articles INNER JOIN category ON articles.cate_id=category.category_ID ORDER BY article_date DESC;";
 		
 	    try{
 	    	connection = getConnection();
