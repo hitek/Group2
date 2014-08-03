@@ -68,6 +68,9 @@ body {
 	font-weight: 600;
 	font-variant: small-caps;
 }
+#article{
+	background: #eeeeee;
+}
 #articlecontent {
 	text-align: left;
 	padding-top: 20px;
@@ -78,7 +81,6 @@ body {
 	line-height: 1.25em;
 	margin: 0.625em 0;
 	text-align: justify;
-	background: #eeeeee;
 }
 #commentheader {
 	padding-top: 10px;
@@ -97,10 +99,11 @@ input[type=submit] {
 }
 #footer{
 	clear:both;
+	margin-top: 200px;
 	width:100%;
 	height:80px;
-	position:absolute;
 	background:#424242;
+	text-align: center;
 }
 a:hover{
 	text-decoration:underline;
@@ -148,4 +151,10 @@ input[type=text]:hover, input[type=password]:hover {
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #357ae8;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+.User {
+	font-size: 1em;
+	line-height: 1.25em;
+	margin: 0.625em 0;
+	text-align: justify;
 }

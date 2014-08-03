@@ -75,20 +75,21 @@
 		<!-- display article -->
 		<div class=article>
 		<div id=articleheader>
-    		<div id="title"><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
-    			<p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%> 
-  			</div><div class="clear"></div> 
-  			<div id="text"><%=article.getArticleText()%></div>
-  			<div id=articlefooter> </div>
+    		<div id="title"><p><input type="radio" name="articleID" value="<%=article.getArticleID()%>"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></p></a></div>
+    		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div> 
+ 
+  			<div id="articlecontent"><%=article.getArticleText()%></div>
+  			 
   		</div>
 		<%		
 		}
-		%>		
+		%>
+		<div id=articlefooter>		
 			<input type="submit" name="submit" value="update"/>
 			<input type="submit" name="submit" formaction="confirmDelete.jsp" value="delete"/>
-		</form>
+		</form></div>
 	</div>
-	<div="sidebar">
+	
 	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
 </div>	
 </body>
