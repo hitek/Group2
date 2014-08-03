@@ -9,7 +9,7 @@ User currentUser = (User) session.getAttribute("currentUser");
 String categoryID = request.getParameter("categoryID");
 	session.setAttribute("catogeryID",categoryID);
 	ArrayList<Category> categories;
-	Category category ;
+	Category category = new Category();
 	int i;
 	System.out.println("catogeryID:"+categoryID);
 	categories=CategoryDAO.getCategoryByparentID(categoryID);
@@ -51,7 +51,7 @@ String categoryID = request.getParameter("categoryID");
          
          %>
          <br/>
-          <%=category.getCategoryName()%><br />
+          <a href="DisplayByCate2.jsp?categoryID=<%=category.getCategoryID() %> " ><%=category.getCategoryName()%></a><br />
          <%
          }
          %>
@@ -62,8 +62,10 @@ String categoryID = request.getParameter("categoryID");
 				article = articles.get(i);
          
          %>
+         <br />
+         <b>Articles:</b>
          <br/>
-          <%=article.getArticleTitle()%><br />
+          <a href="ArticleDisplay.jsp?categoryID=<%=category.getCategoryID() %>" ><%=article.getArticleTitle()%></a><br />
          <%
          }
          %>

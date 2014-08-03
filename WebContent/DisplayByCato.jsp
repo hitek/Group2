@@ -32,23 +32,24 @@
 	<table border="0" >
     
          <%
+         int parentID;
          for(i=0;i<categories.size();i++){
 				category = categories.get(i);
+				parentID= category.getCategoryParentCateID();
          %>
          <tr>
-         <%
-         for(int j=0;j<4;j++) {
-         %>
+         
          <td width="250px" height = "50%" >
-         <a href="ArticleDisplay.jsp?categoryID=<%=category.getCategoryID() %> " ><%= category.getCategoryName()%></a>
+         <%
+         if (parentID==0) {
+         %>
+         <a href="DisplayByCate2.jsp?categoryID=<%=category.getCategoryID() %> " ><%= category.getCategoryName()%></a> 
          </td>
          <%
-         }
+         }}
          %>
          </tr>
-         <%
-         }
-         %>
+         
     </table>
     </form>
     </div>
