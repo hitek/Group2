@@ -7,6 +7,8 @@ public class Article {
 	private String articleAuthor;
 	private String articleText;
 	private String articleDate;
+	private int cateID;
+	private String categoryName;
 	
 	public int getArticleID() {
 		return articleID;
@@ -43,5 +45,17 @@ public class Article {
 	}
 	public void setPublish(int articlePublish) {
 		this.articlePublish = articlePublish;
+	}
+	public int getCateID() {//Lee Hawthorne
+		return cateID;
+	}
+	public  void setCateID(int categoryID) {//Lee Hawthorne
+		this.cateID = categoryID;
+	}
+	public String getCategoryName() {//Lee Hawthorne
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {//Lee Hawthorne
+		this.categoryName = categoryName;
 	}
 }

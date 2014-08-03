@@ -12,7 +12,7 @@ public class Category {
 	public int getCategoryID() {//Lee Hawthorne
 		return categoryID;
 	}
-	public void setCategoryID(int categoryID) {//Lee Hawthorne
+	public  void setCategoryID(int categoryID) {//Lee Hawthorne
 		this.categoryID = categoryID;
 	}
 	

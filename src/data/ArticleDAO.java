@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import beans.Article;
+import beans.Category;
 
 public class ArticleDAO {
 
@@ -37,8 +38,8 @@ public class ArticleDAO {
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM articles ORDER BY article_date DESC;";
-//		String preparedSQL = "select * from articles INNER JOIN category ON articles.cate_id=category.category_ID ORDER BY article_date DESC;";
+//		String preparedSQL = "SELECT * FROM articles ORDER BY article_date DESC;";
+		String preparedSQL = "select * from articles INNER JOIN category ON articles.cate_id=category.category_ID ORDER BY article_date DESC;";
 		
 	    try{
 	    	connection = getConnection();
@@ -46,12 +47,14 @@ public class ArticleDAO {
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				article = new Article();
-				article.setArticleID(rs.getInt("article_id"));
-				article.setArticleTitle(rs.getString("article_title"));
-				article.setArticleAuthor(rs.getString("article_author"));
-				article.setArticleText(rs.getString("article_content"));
-				article.setArticleDate(rs.getString("article_date"));
-				article.setPublish(rs.getInt("article_publish"));
+				article.setArticleID(rs.getInt("article.article_id"));
+				article.setArticleTitle(rs.getString("article.article_title"));
+				article.setArticleAuthor(rs.getString("article.article_author"));
+				article.setArticleText(rs.getString("article.article_content"));
+				article.setArticleDate(rs.getString("article.article_date"));
+				article.setPublish(rs.getInt("article.article_publish"));
+				article.setCateID(rs.getInt("category.category_ID"));
+				article.setCategoryName(rs.getString("category.cate_name"));
 				articles.add(article);
 			}	
 			rs.close();		
@@ -83,6 +86,7 @@ public class ArticleDAO {
 				article.setArticleText(rs.getString("article_content"));
 				article.setArticleDate(rs.getString("article_date"));
 				article.setPublish(rs.getInt("article_publish"));
+				article.setCateID(rs.getInt("cate_ID"));
 				articles.add(article);
 			}	
 			rs.close();
@@ -99,7 +103,7 @@ public class ArticleDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_content, article_publish, article_date) values(?,?,?,?,NOW());";
+		String preparedSQL = "INSERT INTO articles(article_title, article_author, article_content, article_publish, cate_ID, article_date) values(?,?,?,?,NOW());";
 		
 	    try{
 	    	connection = getConnection();
@@ -108,6 +112,7 @@ public class ArticleDAO {
 	    	statement.setString(2, article.getArticleAuthor());
 	    	statement.setString(3, article.getArticleText());
 	    	statement.setInt(4, article.getPublish());
+	    	statement.setInt(5, article.getCateID());
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();

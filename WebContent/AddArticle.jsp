@@ -36,12 +36,14 @@
 		String author = request.getParameter("author");
 		String text = request.getParameter("text");
 		String publish = request.getParameter("publish");
+		String catID = request.getParameter("catID");
 
 		Article article = new Article();
 		article.setArticleTitle(title);
 		article.setArticleAuthor(author);
 		article.setArticleText(text);
 		article.setPublish(Integer.parseInt(publish));
+		article.setCateID(Integer.parseInt(catID));
 		if(articleID!=""&&articleID!=null){
 			article.setArticleID(Integer.parseInt(articleID));
 			int status = ArticleDAO.updateArticle(article);
@@ -119,22 +121,38 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 
 		<p>Article Title:<br/>
 		<input type="text" name="title" value="<%=title%>"/></p>
+		<p>Category:<br/>
+		<select name="category">
+<%-- 				<option value="<%=categories.getCategoryID%>"><%=categories.getCategoryName %></option> --%>
+<!-- 				<option value="1">Private</option> -->
+<!-- 				<option value="2">Publish</option> -->
+				
+		<%					for(i=0;i<categories.size();i++){
+			category = categories.get(i);
+// 			catID = categories.getCategoryID;
+// 			catName = categories.getCategoryName;
+		%>
+		<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
+<%		
+			}
+%>				
+		</select></p>
 		<%if(currentUser.getUser_type()!=2){%>
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
 		<%}else{%>
 		<input type="hidden" name="author" value="<%=author%>, edited by <%=currentUser.getUser_name()%>"/></p>
 		<%}%>
  <!-- *************add category select*************************** -->
-	  	<p>choose category:<br/>
-		<select name="category">
-		 <%
-		    for (i=0;i<categories.size();i++) {
-		    	category = categories.get(i);
-		 %>
-				<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
-		 <%
-		    }
-		 %>
+<!-- 	  	<p>choose category:<br/> -->
+<!-- 		<select name="category"> -->
+<%-- 		 <% --%>
+<!-- // 		    for (i=0;i<categories.size();i++) { -->
+<!-- // 		    	category = categories.get(i); -->
+<%-- 		 %> --%>
+<%-- 				<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option> --%>
+<%-- 		 <% --%>
+<!-- // 		    } -->
+<%-- 		 %> --%>
  <!-- *********************************************************** -->
 				
 		</select></p>-->
@@ -160,12 +178,28 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
 		<p>Article Text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
-		<p>Publish:<br/>
+		Publish:<br/>
 		<select name="publish">
 				<option value="<%=publish%>">no change</option>
 				<option value="0">Private</option>
 				<option value="1">Publish</option>
-		</select></p>
+		</select>
+		Category:<br/>
+		<select name="category">
+<%-- 				<option value="<%=categories.getCategoryID%>"><%=categories.getCategoryName %></option> --%>
+<!-- 				<option value="1">Private</option> -->
+<!-- 				<option value="2">Publish</option> -->
+				
+		<%					for(i=0;i<categories.size();i++){
+			category = categories.get(i);
+// 			catID = categories.getCategoryID;
+// 			catName = categories.getCategoryName;
+		%>
+		<option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
+<%		
+			}
+%>			
+		</select>
 		<input type="submit" name="submit" value="Submit" />
 		<%if(currentUser.getUser_type()!=2){%>
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>
