@@ -27,7 +27,7 @@
 	<li class="active"><a href="Index.jsp">Home</a></li>
 	<li><a href="admin.jsp">Manage Articles</a>
 	<li><a href="AdminListUser.jsp">Edit Users</a></li>
-	<li><a href="listCategory.jsp">Delete Category</a></li>
+	<li><a href="listCategory.jsp">Manage Category</a></li>
 	<li><a href="logOut.jsp">Logout</a></li>
 </ul>
 </div> 

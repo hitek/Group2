@@ -53,7 +53,7 @@
 		User currentUser = (User) session.getAttribute("currentUser");
 			if(currentUser == null){
 		%>
-		<div id="title"><a href="register.jsp">
+		<div id="title"><a href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>">
 		<%=article.getArticleTitle()%></a></div>
 		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>">
 		<%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div>
