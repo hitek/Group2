@@ -11,7 +11,7 @@
 <div class="nav">
 <ul>
 	<li class="active"><a href="Index.jsp">Home</a></li>
-	<li><a href="login.jsp">Log-in</a>
+	<li><a href="login.jsp">Log-in</a></li>
 	<li><a href="register.jsp">Register</a></li>
 </ul>
 </div> 
@@ -54,6 +54,7 @@
 <div class="nav">
 <ul>
 	<li class="active"><a href="Index.jsp">Home</a></li>
+	<li><a href="DisplayByCato.jsp">Categories</a></li>
 	<li><a href="logOut.jsp">Logout</a></li>
 </ul>
 </div> 
