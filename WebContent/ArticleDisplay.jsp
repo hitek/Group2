@@ -4,9 +4,9 @@
 <%
 User currentUser = (User) session.getAttribute("currentUser");
 
-//*************get article by articleID***************Steve Li
+//*************get article by articleID***************Steve Li, Lee Hawthorne
 String articleID = request.getParameter("articleID");
-	session.setAttribute("articleID", articleID);//do we really need this in session?, and is it removed anywhere?
+	session.setAttribute("articleID", articleID);
 	Article article;
 	System.out.println("articleID:"+articleID);
 	article=ArticleDAO.getArticle(articleID);
@@ -21,7 +21,7 @@ String articleID = request.getParameter("articleID");
 	comments=CommentDAO.getArticleComments(Integer.parseInt(articleID));
 %>
 
-<%//************Post Comments to Comment table*************** 
+<%//************Post Comments to Comment table*************** ,Lee Hawthorne
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String commentAuthor = currentUser.getUser_name();
 		String authorID = Integer.toString(currentUser.getUser_ID());
@@ -40,11 +40,11 @@ String articleID = request.getParameter("articleID");
 		if(request.getParameter("submit").equals("Post")){
 			int status = CommentDAO.addComment(commentPost);
 		}
-		//************* delete comment, Lee Hawthorne****************************
+		//************* delete comment ****************************Lee Hawthorne
 		if(request.getParameter("submit").equals("Delete Comment")){
 			CommentDAO.deleteComment(Integer.parseInt(commentID));
 		}
-		//************* update comment, Lee Hawthorne****************************
+		//************* update comment ****************************Lee Hawthorne
 		if(request.getParameter("submit").equals("Update Comment")){
 			comment=CommentDAO.getComment(commentID);
 			comment.setCommentText(request.getParameter("text"));
@@ -106,7 +106,7 @@ String articleID = request.getParameter("articleID");
         	 	comment = new Comment();
 				comment = comments.get(i);
          %>
-         
+         <!-- display radio buttons for certain users and display comments, Lee Hawthorne -->
         <div class = ArclComments><%if(currentUser.getUser_type()==2||Integer.parseInt(comment.getCommentAuthorID())==currentUser.getUser_ID()){//radio buttons only for admin and comment author%>
 		<input type="radio" name="commentID" value="<%=comment.getCommentID()%>">
 		<%displayDeleteButton=1;}%>
@@ -118,6 +118,7 @@ String articleID = request.getParameter("articleID");
          
          if(displayDeleteButton==1){
          %>
+         <!-- edit comments box, Lee Hawthorne -->
          <input type="hidden" name="submitType" value="delete">
          <input type="hidden" name="articleID" value="<%=article.getArticleID()%>">
          <%if(currentUser.getUser_type()==2){%>
@@ -132,6 +133,7 @@ String articleID = request.getParameter("articleID");
 		<%}
        	}%>
        
+<!-- add comments box, -->
  <%
  if(currentUser.getUser_type() !=2){%>
 	

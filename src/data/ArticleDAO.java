@@ -67,7 +67,7 @@ public class ArticleDAO {
 		return articles;
 	}
 	
-	//***************sort, Lee Hawthorne*****************************
+	//***************sort*****************************Lee Hawthorne
 	public synchronized static ArrayList<Article> getArticlesSort(String sortType) {
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;

@@ -151,7 +151,7 @@ public class CommentDAO {
 	    return status;
 	}
 	
-	public synchronized static ArrayList<Comment> getArticleComments(int articleID) {
+	public synchronized static ArrayList<Comment> getArticleComments(int articleID) {//Lee Hawthorne
 	 	ArrayList<Comment> comments = new ArrayList<Comment>();
 	 	Comment comment;
 	 	PreparedStatement statement=null;

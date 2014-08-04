@@ -102,7 +102,7 @@ public class UserDAO {
 	    return status;
 	}
 	
-	public synchronized static User getUser(String userID){
+	public synchronized static User getUser(String userID){//Lee Hawthorne
 		User user = new User();
 	 	PreparedStatement statement=null;
 		String preparedSQL = "select * from user where user_id=?;";
@@ -152,7 +152,7 @@ public class UserDAO {
 	    return userType;
 	}
 	
-	public synchronized static int updateUser(User user){
+	public synchronized static int updateUser(User user){//Lee Hawthorne
 		int status=0;
 		
 	 	PreparedStatement statement=null;

@@ -22,7 +22,7 @@
 %>
     
 <%
-	//********** delete user ***************
+	//********** delete user ***************Lee Hawthorne
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String userID = request.getParameter("userID");
 		
@@ -33,7 +33,7 @@
 	}
 %>
 <%
-//*************** get user info ****************************
+//*************** get user info ****************************Lee Hawthorne
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String userID = request.getParameter("userID");
 	String name = "" ;

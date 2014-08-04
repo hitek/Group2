@@ -22,7 +22,7 @@
 	%>
     
 	<%
-//******************** add or update user *************************
+//******************** add or update user *************************Lee Hawthorne
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String userID = request.getParameter("userID");
 		String name = request.getParameter("name");
@@ -45,7 +45,7 @@
 	}
 %>
 <%
-//*************** get user info ****************************
+//*************** get user info ****************************Lee Hawthorne
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String userID = request.getParameter("userID");
 	String name = "" ;
@@ -95,6 +95,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <div id="wrapper">
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
+	<!-- add or update user form, Lee Hawthorne -->
 	<form action="" method="POST">
 		<%if(userID!=null&&userID!=""){//if userID is not empty, fill in data
 		%>

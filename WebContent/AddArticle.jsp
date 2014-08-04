@@ -29,7 +29,7 @@
     %>
     
 	<%
-//******************** add or update article *************************
+//******************** add or update article *************************Lee Hawthorne
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String articleID = request.getParameter("articleID");
 		String title = request.getParameter("title");
@@ -62,7 +62,7 @@
 	}
 %>
 <%
-//*************** get article info ****************************
+//*************** get article info ****************************Lee Hawthorne
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String articleID = request.getParameter("articleID");
 	String title = "" ;
@@ -118,6 +118,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <jsp:include page="/includes/header.jsp" />
 	<div id="page">
 	<jsp:include page="header.jsp" />
+	<!-- add article, Lee Hawthorne -->
 	<form action="" method="POST">
 		<%if(articleID!=null&&articleID!=""){%>
 		<input type="hidden" name="articleID" value="<%=articleID%>"> 

@@ -20,7 +20,7 @@
 	}
 %>
 
-<%//************Get Users******************
+<%//************Get Users******************Lee Hawthorne
 	ArrayList<User> users;
 	User user;
 	int i;
@@ -51,7 +51,7 @@
 		</form>
 		<form action="EditUser.jsp" method="get">
 		<%
-		//********************put names for type numbers, Lee Hawthorne*******************
+		//********************put names for type numbers*******************Lee Hawthorne
 			String typeName="";
 			int type=0;
 			for(i=0;i<users.size();i++){

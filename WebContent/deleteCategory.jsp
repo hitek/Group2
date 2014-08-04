@@ -25,7 +25,7 @@
 %>
 
 <%
-	//********** delete category ***************
+	//********** delete category ***************Lee Hawthorne
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		String categoryID = request.getParameter("categoryID");
 		
@@ -36,7 +36,7 @@
 	}
 %>
 <%
-//*************** get category info, Lee Hawthorne ****************************
+//*************** get category info ****************************Lee Hawthorne
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String categoryID = request.getParameter("categoryID");
 	String name = "" ;
