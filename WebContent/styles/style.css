@@ -133,7 +133,7 @@ input[type=text]:hover, input[type=password]:hover {
 #articlefooter {
   /* border: 1px solid #3079ed; */
   border: 0px;
-  color: #fff;
+  margin-bottom: 5px;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
 }
 

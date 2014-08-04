@@ -56,8 +56,11 @@
 			//****************checks if article is published or not**************TR
 			if(article.getPublish()==1){
 	%>
-		<div class="article">
-		<div id="articleheader">
+	
+	
+	
+		<div class=article>
+		<div id=articleheader>
 		<%
 		User currentUser = (User) session.getAttribute("currentUser");
 			if(currentUser == null){
@@ -83,11 +86,12 @@
 		<%
 			}else{
 		%>
-    		<br/><div id="title"><a style="font-weight:bold; font-size:15pt" href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></a></div><div class="clear"></div> 
-    			<p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%> <br>
-    				
-  			</div><div class="clear"></div> 
-  			<div id="text"><%=article.getArticleText()%></div>
+		<div class=article>
+		<div id=articleheader>
+    		<div id="title"><p><a style="font-weight:bold; font-size:15pt" href="ArticleDisplay.jsp?articleID=<%=article.getArticleID()%>"><%=article.getArticleTitle()%></a></div>
+    		<div id="author"><p>Published by : <a href="AuthorArtList.jsp?author=<%=article.getArticleAuthor()%>"><%=article.getArticleAuthor()%></a> on <%=article.getArticleDate()%></div>
+    	<div id="articlecontent"><%=article.getArticleText()%></div>
+    	<div id=articlefooter>
   			<%
   			for(k=0;k<categories.size();k++){
 					category = categories.get(k);
@@ -98,18 +102,15 @@
 					
 					}}
   			%>
-  			<div id=articlefooter> </div>
-  		</div>
+  		</div>	
 	<%		
 			}
 			}
 		}
 	%>
-	
+	 </div></div>
 	</div>
-	<div="sidebar">
-	<jsp:include page="/includes/sidebar.jsp" /></div>
-	<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+
 	
 </div>		
 </body>
