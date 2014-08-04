@@ -51,11 +51,11 @@
 <body>
 	<wrapper>
 	<jsp:include page="/includes/header.jsp" />
-		<page>
+	
 		<div class="login-card">
     	<h1>Log-in</h1><br>
 		<form action="" method="POST">
-			<input type="text" name="username" placeholder="Username">
+			<input type="text" name="username" placeholder="Username"><br>
 			<input type="password" name="password" placeholder="Password">
     		<input type="submit" name="sumbit" class="login login-submit" value="Login">
     		<input type="submit" name="sumbit" formaction="Index.jsp" class="login login-cancel" value="Cancel">
@@ -65,8 +65,7 @@
     		<a href="register.jsp">[ Register ]</a>
  	 	</div>
  	 	</div>
-		</page>
-		<div id="footer"><jsp:include page="/includes/footer.jsp" /></div>
+		
 	</wrapper>
 	 <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
 </body>
