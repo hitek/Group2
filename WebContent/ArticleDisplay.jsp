@@ -100,7 +100,6 @@ if(articleID == null){
 		<div id="articleheader">
 		<div id="title"><%=article.getArticleTitle() %></div>
         <div id="author">Author: <%=article.getArticleAuthor() %></div>
-        </div>
         <div id="articlecontent"><%=article.getArticleText() %></div>
       </form>
       
@@ -117,8 +116,8 @@ if(articleID == null){
          <%=comment.getCommentText() %></div>
          <div class = ArclComments>By: <%=comment.getCommentAuthor() %></div>
          <%
-         
          }
+         
          
          if(displayDeleteButton==1){
          %>
@@ -139,7 +138,7 @@ if(articleID == null){
        
 <!-- add comments box, -->
  <%
- if(currentUser.getUser_type() !=2){%>
+ if(currentUser.getUser_type() ==2 || currentUser.getUser_type() ==0 || currentUser.getUser_type() ==1){%>
 	
   	<form action="" method="post">
   		<div id="commentheader"><p>Add Comment</p></div>
