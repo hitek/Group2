@@ -33,7 +33,7 @@ public class ArticleDAO {
 			}
 	        return conn;		
 		}		 
-	
+	//***************Eden Melgar*****************************
 	public synchronized static ArrayList<Article> getArticles() {
 	 	ArrayList<Article> articles = new ArrayList<Article>();
 	 	Article article;
@@ -98,7 +98,7 @@ public class ArticleDAO {
 		}
 		return articles;
 	}
-	
+	//***************Eden Melgar*****************************
 	public synchronized static int addArticle(Article article){
 		int status=0;
 		
@@ -122,6 +122,7 @@ public class ArticleDAO {
 		}	
 	    return status;
 	}
+	//***************Eden Melgar*****************************
 	public synchronized static int deleteArticle(int articleID){
 		int status=0;
 		
@@ -141,7 +142,7 @@ public class ArticleDAO {
 		}	
 	    return status;
 	}
-	
+	//***************Eden Melgar*****************************
 	public synchronized static Article getArticle(String articleID){
 		Article article = new Article();
 	 	PreparedStatement statement=null;

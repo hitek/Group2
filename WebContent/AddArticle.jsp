@@ -130,15 +130,16 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="author" value="<%=author%>, edited by <%=currentUser.getUser_name()%>"/></p>
 		<%}%>
 		
-		<p>Article Text:<br/>
+		<p>Article Text:
 		<textarea type="textarea" name="text" style="width: 400px; height: 200px;" ><%=text%></textarea></p>
-		<p>Publish:<br/>
+		<div id="articlefooter2">
+		<p>Publish:
 		<select name="publish">
 				<option value="<%=publish%>">no change</option>
 				<option value="0">Private</option>
 				<option value="1">Publish</option>
 		</select></p>
-		<p>Category:<br/>
+		<p>Category:
 		<select name="categoryID">
 		<option value="<%=categoryID%>">no change</option>
 				
@@ -146,7 +147,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 			category = categories.get(i);
 			String stringCat = Integer.toString(category.getCategoryID());
 		%>
-		<option value="<%=stringCat%>"><%=category.getCategoryName()%></option>
+		<option value="<%=stringCat%>"><%=category.getCategoryName()%></option></div>
 <%		
 			}
 %>				
@@ -165,12 +166,13 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<input type="hidden" name="author" value="<%=currentUser.getUser_name()%>"/></p>
 		<p>Article Text:<br/>
 		<textarea name="text" style="width: 400px; height: 200px;" ></textarea></p>
-		Publish:<br/>
+		<div id="articlefooter2">
+		Publish:
 		<select name="publish">
 				<option value="0">Private</option>
 				<option value="1">Publish</option>
 		</select>
-		Category:<br/>
+		Category:
 		<select name="categoryID">
 				<option value="34">Default</option>
 					<%					for(i=0;i<categories.size();i++){
@@ -181,7 +183,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <%		
 			}
 %>			
-		</select>
+		</select></div>
 		<input type="submit" name="submit" value="Submit" />
 		<%if(currentUser.getUser_type()!=2){%>
 		<input type="submit" name="submit" formaction="Author.jsp" value="Cancel"/>

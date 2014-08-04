@@ -1,5 +1,5 @@
 package beans;
-
+//***************Eden Melgar*****************************
 public class User {
 	private int user_ID;
 	private int user_type;
