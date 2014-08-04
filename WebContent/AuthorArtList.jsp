@@ -6,6 +6,10 @@
 	Article article;
 	int i;
 	String author = request.getParameter("author");
+	if(author == null){
+		response.sendRedirect("Index.jsp");
+		return;
+	}
 	session.setAttribute("author", author);//do we really need this in session?, and is it removed anywhere?
 	articles=ArticleDAO.getArtByAuthor(author);//needs to be author instead of "author","author" will only search for the word author
 %>

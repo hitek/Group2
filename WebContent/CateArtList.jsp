@@ -6,6 +6,10 @@
 	Article article;
 	int i;
 	String categoryID = request.getParameter("categoryID");
+	if(categoryID == null){
+		response.sendRedirect("Index.jsp");
+		return;
+	}
 	session.setAttribute("categoryID", categoryID);
 	articles=ArticleDAO.getArtByAuthor(categoryID);
 %>

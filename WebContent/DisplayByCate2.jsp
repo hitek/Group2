@@ -7,6 +7,10 @@ User currentUser = (User) session.getAttribute("currentUser");
 //*************get categories by cateID***************Steve Li
 
 String categoryID = request.getParameter("categoryID");
+	if(categoryID == null){
+		response.sendRedirect("Index.jsp");
+		return;
+	}
 	session.setAttribute("catogeryID",categoryID);
 	ArrayList<Category> categories;
 	Category category = new Category();

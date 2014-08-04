@@ -3,9 +3,13 @@
 
 <%
 User currentUser = (User) session.getAttribute("currentUser");
-
 //*************get article by articleID***************Steve Li, Lee Hawthorne
 String articleID = request.getParameter("articleID");
+
+if(articleID == null){
+	response.sendRedirect("Index.jsp");
+	return;
+}
 	session.setAttribute("articleID", articleID);
 	Article article;
 	System.out.println("articleID:"+articleID);
