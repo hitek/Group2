@@ -1,5 +1,5 @@
 package beans;
-
+//***************Eden Melgar*****************************
 public class Article {
 	private int articleID;
 	private int articlePublish;

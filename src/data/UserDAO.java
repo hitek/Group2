@@ -32,6 +32,7 @@ public class UserDAO {
 			}
 	        return conn;		
 		}
+	//***************Eden Melgar*****************************
 	public synchronized static ArrayList<User> getUsers() {
 	 	ArrayList<User> users = new ArrayList<User>();
 	 	User user;
@@ -101,7 +102,7 @@ public class UserDAO {
 		}	
 	    return status;
 	}
-	
+	//***************Eden Melgar*****************************
 	public synchronized static User getUser(String userID){
 		User user = new User();
 	 	PreparedStatement statement=null;
@@ -174,7 +175,7 @@ public class UserDAO {
 		}	
 	    return status;
 	}
-	
+	//***************Eden Melgar*****************************
 	public synchronized static User authenticate(String username, String password) {
 	 	User user=null;
 	 	PreparedStatement statement=null;
