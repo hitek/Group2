@@ -3,7 +3,7 @@
 
 <%
 User currentUser = (User) session.getAttribute("currentUser");
-//*************get article by articleID***************Steve Li, Lee Hawthorne
+//*************get article by articleID***************Steve Li, Lee Hawthorne, Zackary Moore
 String articleID = request.getParameter("articleID");
 
 if(articleID == null){
@@ -16,7 +16,7 @@ if(articleID == null){
 	article=ArticleDAO.getArticle(articleID);
 
 %>
-<%//************Get Comments by articleID******************
+<%//************Get Comments by articleID****************** Zackary Moore
 	int displayDeleteButton=0;//if 0 doesn't display delete comment button, if a radio button appears it's set to 1, Lee Hawthorne
 	ArrayList<Comment> comments;
 	Comment comment;

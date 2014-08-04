@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*"%>
 <%
+//Zackary Moore, Eden, Tim
 	User currentUser = (User) session.getAttribute("currentUser");
 	if(currentUser == null){
 

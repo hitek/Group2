@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="beans.*,data.*,java.util.ArrayList" %>
     
-<%//*************get articles***************Steve Li
+<%//*************get articles***************Steve Li, Zackary Moore
 	ArrayList<Article> articles;
 	Article article;
 	int i;

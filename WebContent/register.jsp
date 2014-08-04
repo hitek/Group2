@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.*,data.*, java.util.ArrayList"%>
 <%
+//Zackary Moore
 String message = "Username is already taken, please try again";
 
 ArrayList<User> users;

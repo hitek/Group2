@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
         <%
+        //Zackary Moore
             session.invalidate();
             response.sendRedirect("Index.jsp");
         %>
