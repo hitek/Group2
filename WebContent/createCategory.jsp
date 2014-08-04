@@ -51,7 +51,7 @@
 	}
 %>
 <%
-//*************** get category info ****************************
+//*************** get category info ****************************Lee Hawthorne
 if(request.getMethod().equalsIgnoreCase("GET")){
 	String categoryID = null;
 	categoryID = request.getParameter("categoryID");

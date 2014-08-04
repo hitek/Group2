@@ -102,8 +102,8 @@ public class UserDAO {
 		}	
 	    return status;
 	}
-	//***************Eden Melgar*****************************
-	public synchronized static User getUser(String userID){//Lee Hawthorne
+	//***************Eden Melgar, Lee Hawthorne*****************************
+	public synchronized static User getUser(String userID){
 		User user = new User();
 	 	PreparedStatement statement=null;
 		String preparedSQL = "select * from user where user_id=?;";
@@ -153,7 +153,8 @@ public class UserDAO {
 	    return userType;
 	}
 	
-	public synchronized static int updateUser(User user){//Lee Hawthorne
+	//*****************Lee Hawthorne*****************************
+	public synchronized static int updateUser(User user){
 		int status=0;
 		
 	 	PreparedStatement statement=null;
@@ -192,7 +193,7 @@ public class UserDAO {
 				user.setUser_ID(rs.getInt("user_id"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_psword(rs.getString("user_psword"));
-				user.setUser_type(rs.getInt("user_type"));
+				user.setUser_type(rs.getInt("user_type"));//Lee Hawthorne
 			}	
 			rs.close();		
 			statement.close();
